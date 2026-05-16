@@ -3,6 +3,40 @@
  * Edit this file to change what appears in the app.
  */
 const CONTENT = {
+  /**
+   * Phases group journey items into 3 top-level cards on the home screen.
+   * Each phase lists the journey IDs it contains.
+   */
+  phases: [
+    {
+      id: 'foundation',
+      title: 'Foundation',
+      sub: 'Rights, wellbeing & research',
+      icon: 'ti-anchor',
+      color: 'mint',
+      intro: 'Start here. Lock in your legal entitlements, look after yourself, and understand where you want to go next.',
+      journeyIds: ['steps', 'mental', 'research']
+    },
+    {
+      id: 'momentum',
+      title: 'Build momentum',
+      sub: 'Strategy, network & brand',
+      icon: 'ti-rocket',
+      color: 'amber',
+      intro: 'Put your plan into action. Set weekly targets, reconnect with your network, and sharpen how you show up.',
+      journeyIds: ['strategy', 'network', 'brand']
+    },
+    {
+      id: 'land',
+      title: 'Land the role',
+      sub: 'Interviews, skills & offers',
+      icon: 'ti-trophy',
+      color: 'lilac',
+      intro: 'The final push. Prepare to interview brilliantly, keep learning, and negotiate the offer you deserve.',
+      journeyIds: ['interview', 'upskill', 'offers']
+    }
+  ],
+
   journey: [
     {
       id: 'steps',
