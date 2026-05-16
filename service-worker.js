@@ -2,7 +2,7 @@
  * Service Worker — caches app shell for offline use.
  * Bump CACHE_VERSION when you ship updates so old caches are purged.
  */
-const CACHE_VERSION = 'reset-v3';
+const CACHE_VERSION = 'reset-v4';
 
 const ASSETS = [
   './',
