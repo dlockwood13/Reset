@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Squircle background -->
+  <rect width="512" height="512" rx="112" fill="#3CBF9E"/>
+
+  <!-- Compass star points (north, east, south, west) -->
+  <g fill="#FFFFFF" opacity="0.95">
+    <!-- North point -->
+    <polygon points="256,72 274,200 256,184 238,200" />
+    <!-- South point -->
+    <polygon points="256,440 274,312 256,328 238,312" />
+    <!-- East point -->
+    <polygon points="440,256 312,274 328,256 312,238" />
+    <!-- West point -->
+    <polygon points="72,256 200,274 184,256 200,238" />
+  </g>
+
+  <!-- Door frame -->
+  <rect x="186" y="156" width="140" height="200" rx="4" fill="#FFFFFF"/>
+  <!-- Open door (slightly ajar, revealing teal interior) -->
+  <path d="M 256 156 L 326 176 L 326 356 L 256 336 Z" fill="#2EA383"/>
+  <!-- Door handle -->
+  <circle cx="276" cy="256" r="5" fill="#FFFFFF"/>
+
+  <!-- Center compass dot -->
+  <circle cx="256" cy="256" r="10" fill="#FFFFFF" opacity="0.4"/>
+</svg>
