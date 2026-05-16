@@ -1,6 +1,8 @@
-# Reset
+# RESET
 
-A privacy-first Progressive Web App for navigating job search after redundancy in the UK.
+> *For navigating redundancy in the UK*
+
+A privacy-first Progressive Web App that helps you move through redundancy with clarity and momentum.
 
 > **No accounts. No tracking. No server.** Every piece of data — your progress, journal entries, mood, name — stays on your device in `localStorage`.
 
@@ -13,8 +15,22 @@ A privacy-first Progressive Web App for navigating job search after redundancy i
 - 🔥 **Streak tracking** to keep you consistent
 - ✅ **Daily checklist** that auto-resets each day
 - 📓 **Mood-aware journal** for reflections and wins
+- 💚 **Mental health support** — crisis lines, breathing tools & grounding
 - 📤 **Export your data** anytime as JSON backup
 - 🗑️ **Clear all data** with one tap
+
+## Brand
+
+| | |
+|---|---|
+| **Primary** | `#3CBF9E` Teal |
+| **Charcoal** | `#333333` |
+| **Cloud Gray** | `#F5F7F6` |
+| **White** | `#FFFFFF` |
+| **Heading font** | Montserrat (600/700) |
+| **Body font** | Lato (400/500/700) |
+
+Brand assets live in `/assets/` (logo, icons, colors, fonts).
 
 ## Project structure
 
@@ -29,7 +45,12 @@ reset-pwa/
 ├── icons/
 │   ├── icon-192.png
 │   ├── icon-512.png
-│   └── icon-maskable-512.png
+│   ├── icon-maskable-512.png
+│   └── icon-source.svg
+├── assets/
+│   ├── logo/               # Logo lockups & marks
+│   ├── colors/             # Color swatch reference
+│   └── fonts/              # Bundled fonts (optional)
 ├── README.md
 └── .gitignore
 ```
@@ -50,28 +71,25 @@ Then open <http://localhost:3000>.
 
 ### GitHub Pages
 1. Push to GitHub
-2. Repo Settings → Pages → Source: `main` branch, `/` root
+2. Repo Settings → Pages → Source: `main` branch, `/` root (or use the included workflow)
 3. Visit `https://<username>.github.io/<repo>/`
 
 ### Netlify / Vercel
 Drop the folder in — zero config needed.
 
-### Custom domain
-Add a `CNAME` file with your domain at the root.
-
 ## Icons
 
-Generate the three PNG icons from any 1024×1024 source using [pwa-asset-generator](https://github.com/elegantapp/pwa-asset-generator):
+Generate the three PNG icons from `icons/icon-source.svg` using [pwa-asset-generator](https://github.com/elegantapp/pwa-asset-generator):
 
 ```bash
-npx pwa-asset-generator logo.svg ./icons --icon-only --type png --opaque false --padding "0"
+npx pwa-asset-generator icons/icon-source.svg ./icons --icon-only --type png --opaque false --padding "0"
 ```
 
-Or use [realfavicongenerator.net](https://realfavicongenerator.net) — paste your logo, download the bundle, drop in the three sizes needed.
+Or use [realfavicongenerator.net](https://realfavicongenerator.net).
 
 ## Editing content
 
-All journey sections, checklist tasks, and resources live in `content.js`. Edit that file to change what appears in the app — no other code changes needed.
+All journey sections, checklist tasks, mental health tools, and resources live in `content.js`. Edit that file to change what appears in the app — no other code changes needed.
 
 ## Data privacy
 
