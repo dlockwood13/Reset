@@ -1,0 +1,57 @@
+# 🧭 Reset - Brand Guidelines
+
+> **"For navigating redundancy in the UK"**
+
+This repository contains the official brand assets, color palettes, and typography guidelines for **Reset**, an app designed to support and guide individuals through the redundancy process in the UK.
+
+---
+
+## 🎨 Color Palette
+
+Our primary brand color conveys calm, stability, and growth. It should be used as the primary action color across the app and marketing materials.
+
+| Color | Hex Code | RGB | Usage |
+| :--- | :--- | :--- | :--- |
+| **Reset Teal** | `#3CBF9E` | `rgb(60, 191, 158)` | Primary branding, buttons, active states, accents |
+| **Dark Charcoal** | `#333333` | `rgb(51, 51, 51)` | Primary text, high-contrast UI elements |
+| **Cloud Gray** | `#F5F7F6` | `rgb(245, 247, 246)` | App backgrounds, secondary cards |
+| **Pure White** | `#FFFFFF` | `rgb(255, 255, 255)` | Text on Teal, card backgrounds |
+
+---
+
+## 🔤 Typography
+
+We use clean, highly legible, modern sans-serif fonts to ensure clarity, accessibility, and a professional tone.
+
+### Primary Font: Montserrat
+Used for all Headings (H1, H2, H3), Logos, and primary navigation.
+* **Weights:** Bold (700), Semi-Bold (600)
+* **CSS Example:** `font-family: 'Montserrat', sans-serif; font-weight: 700;`
+
+### Secondary Font: Lato
+Used for all body text, paragraphs, and fine print. Highly readable on mobile devices.
+* **Weights:** Regular (400), Light (300)
+* **CSS Example:** `font-family: 'Lato', sans-serif; font-weight: 400;`
+
+---
+
+## 🖼️ Logo Usage
+
+The Reset logo should always have sufficient breathing room. 
+
+* **Primary Logo:** Use the Teal logo on white or light gray backgrounds.
+* **Reversed Logo:** Use the solid White logo on the Teal background or dark imagery.
+* **Clear Space:** Maintain a padding around the logo equal to the height of the "R" in Reset.
+
+*(Note: Add links to your specific logo files here once uploaded to the `/assets/logo/` folder)*
+
+---
+
+## 📁 Repository Contents
+
+* `/assets/logo` - SVG and PNG versions of the main logo and icon mark.
+* `/assets/icons` - App icons, favicons, and UI iconography.
+* `/fonts` - Open-source font files (Montserrat & Lato).
+
+---
+*Last updated: May 2026*
