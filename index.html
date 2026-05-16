@@ -27,6 +27,7 @@
       <div>
         <div class="greet" id="greet-text">Welcome</div>
         <div class="greet-sub" id="greet-sub">Let's keep moving</div>
+        <div class="tagline">For navigating redundancy in the UK</div>
       </div>
       <div class="avatar" id="avatar" onclick="nav.go('settings')">R</div>
     </div>
@@ -58,6 +59,15 @@
     </div>
 
     <div class="phases" id="phases-list"></div>
+
+    <button class="support-card" onclick="nav.go('support')" aria-label="Mental health support">
+      <div class="support-icon"><i class="ti ti-heart-handshake"></i></div>
+      <div class="support-text">
+        <div class="support-title">Need a moment?</div>
+        <div class="support-sub">Crisis lines, breathing tools & quick check-in</div>
+      </div>
+      <i class="ti ti-chevron-right support-chev"></i>
+    </button>
   </div>
 </div>
 
@@ -89,6 +99,114 @@
     <div class="sub-title">Helpful resources</div>
   </div>
   <div class="res-list" id="res-list" style="padding:8px 20px 24px"></div>
+</div>
+
+<!-- MENTAL HEALTH SUPPORT -->
+<div id="page-support" class="page sub-page">
+  <div class="sub-header">
+    <button class="back-btn" onclick="nav.back()" aria-label="Back"><i class="ti ti-chevron-left"></i></button>
+    <div class="sub-title">Mental health support</div>
+  </div>
+
+  <div class="support-body">
+    <div class="support-banner">
+      <i class="ti ti-info-circle"></i>
+      <div>You're not alone. Reach out — these services are free, confidential, and there for you 24/7.</div>
+    </div>
+
+    <div class="support-section-h">Urgent support</div>
+    <div class="support-section">
+      <a class="crisis-row" href="tel:116123">
+        <div class="crisis-icon"><i class="ti ti-phone-call"></i></div>
+        <div class="crisis-info">
+          <div class="crisis-name">Samaritans</div>
+          <div class="crisis-sub">24/7 listening service · Free to call</div>
+        </div>
+        <div class="crisis-num">116 123</div>
+      </a>
+      <a class="crisis-row" href="tel:111">
+        <div class="crisis-icon"><i class="ti ti-stethoscope"></i></div>
+        <div class="crisis-info">
+          <div class="crisis-name">NHS 111 · Option 2</div>
+          <div class="crisis-sub">Mental health crisis support</div>
+        </div>
+        <div class="crisis-num">111</div>
+      </a>
+      <a class="crisis-row" href="sms:85258&body=SHOUT">
+        <div class="crisis-icon"><i class="ti ti-message-circle"></i></div>
+        <div class="crisis-info">
+          <div class="crisis-name">SHOUT</div>
+          <div class="crisis-sub">Text SHOUT to 85258 · Free, 24/7</div>
+        </div>
+        <div class="crisis-num">85258</div>
+      </a>
+      <a class="crisis-row" href="tel:0800585858">
+        <div class="crisis-icon"><i class="ti ti-user"></i></div>
+        <div class="crisis-info">
+          <div class="crisis-name">CALM</div>
+          <div class="crisis-sub">5pm–midnight · Anyone struggling</div>
+        </div>
+        <div class="crisis-num">0800 58 58 58</div>
+      </a>
+    </div>
+
+    <div class="support-section-h">Daily tools</div>
+
+    <div class="tool-grid">
+      <button class="tool-card" onclick="app.startBreathing()" aria-label="Start breathing exercise">
+        <div class="tool-icon mint"><i class="ti ti-wind"></i></div>
+        <div class="tool-title">Box breathing</div>
+        <div class="tool-sub">90 seconds</div>
+      </button>
+      <button class="tool-card" onclick="app.openGrounding()" aria-label="Grounding exercise">
+        <div class="tool-icon amber"><i class="ti ti-hand-stop"></i></div>
+        <div class="tool-title">5-4-3-2-1</div>
+        <div class="tool-sub">Grounding</div>
+      </button>
+      <button class="tool-card" onclick="nav.go('journal')" aria-label="Mood check-in">
+        <div class="tool-icon coral"><i class="ti ti-mood-smile"></i></div>
+        <div class="tool-title">Mood check</div>
+        <div class="tool-sub">Log how you feel</div>
+      </button>
+      <button class="tool-card" onclick="app.openAffirmation()" aria-label="Daily affirmation">
+        <div class="tool-icon lilac"><i class="ti ti-sparkles"></i></div>
+        <div class="tool-title">Reminder</div>
+        <div class="tool-sub">Daily affirmation</div>
+      </button>
+    </div>
+
+    <div class="support-section-h">Ongoing support</div>
+    <div class="support-section">
+      <a class="ongoing-row" href="https://www.mind.org.uk" target="_blank" rel="noopener noreferrer">
+        <div class="ongoing-icon"><i class="ti ti-brain"></i></div>
+        <div class="ongoing-info">
+          <div class="ongoing-name">Mind</div>
+          <div class="ongoing-sub">Mental health information & advice</div>
+        </div>
+        <i class="ti ti-arrow-up-right ongoing-arrow"></i>
+      </a>
+      <a class="ongoing-row" href="https://www.nhs.uk/mental-health/talking-therapies-medicine-treatments/talking-therapies-and-counselling/nhs-talking-therapies/" target="_blank" rel="noopener noreferrer">
+        <div class="ongoing-icon"><i class="ti ti-message-2"></i></div>
+        <div class="ongoing-info">
+          <div class="ongoing-name">NHS Talking Therapies</div>
+          <div class="ongoing-sub">Free therapy · Self-refer online</div>
+        </div>
+        <i class="ti ti-arrow-up-right ongoing-arrow"></i>
+      </a>
+      <a class="ongoing-row" href="https://www.moneyhelper.org.uk/en/money-troubles/dealing-with-debt" target="_blank" rel="noopener noreferrer">
+        <div class="ongoing-icon"><i class="ti ti-pound"></i></div>
+        <div class="ongoing-info">
+          <div class="ongoing-name">MoneyHelper</div>
+          <div class="ongoing-sub">Financial stress · Free guidance</div>
+        </div>
+        <i class="ti ti-arrow-up-right ongoing-arrow"></i>
+      </a>
+    </div>
+
+    <div class="support-foot">
+      If you or someone you know is in immediate danger, call <a href="tel:999">999</a>.
+    </div>
+  </div>
 </div>
 
 <!-- CHECKLIST -->
@@ -199,6 +317,41 @@
 </div>
 
 <div class="toast" id="toast"></div>
+
+<!-- BREATHING EXERCISE MODAL -->
+<div class="modal" id="modal-breathing" style="display:none">
+  <div class="modal-card">
+    <button class="modal-close" onclick="app.stopBreathing()" aria-label="Close"><i class="ti ti-x"></i></button>
+    <div class="breath-stage" id="breath-stage">Get ready</div>
+    <div class="breath-circle" id="breath-circle"></div>
+    <div class="breath-cycle" id="breath-cycle">Cycle 0 of 4</div>
+  </div>
+</div>
+
+<!-- GROUNDING MODAL -->
+<div class="modal" id="modal-grounding" style="display:none">
+  <div class="modal-card grounding-card">
+    <button class="modal-close" onclick="app.closeModal('grounding')" aria-label="Close"><i class="ti ti-x"></i></button>
+    <h3 class="modal-title">5-4-3-2-1 grounding</h3>
+    <p class="modal-intro">Bring yourself back to the present moment. Take your time with each one.</p>
+    <div class="ground-step"><div class="ground-num">5</div><div class="ground-text"><strong>things you can see</strong><br><span>Look around. Name them quietly.</span></div></div>
+    <div class="ground-step"><div class="ground-num">4</div><div class="ground-text"><strong>things you can feel</strong><br><span>Your feet on the floor, fabric on skin.</span></div></div>
+    <div class="ground-step"><div class="ground-num">3</div><div class="ground-text"><strong>things you can hear</strong><br><span>Traffic, a clock, your own breath.</span></div></div>
+    <div class="ground-step"><div class="ground-num">2</div><div class="ground-text"><strong>things you can smell</strong><br><span>Or two scents you like.</span></div></div>
+    <div class="ground-step"><div class="ground-num">1</div><div class="ground-text"><strong>thing you can taste</strong><br><span>Or one thing you're grateful for today.</span></div></div>
+    <button class="btn-primary" onclick="app.closeModal('grounding')" style="margin-top:18px">Done</button>
+  </div>
+</div>
+
+<!-- AFFIRMATION MODAL -->
+<div class="modal" id="modal-affirmation" style="display:none">
+  <div class="modal-card affirmation-card">
+    <button class="modal-close" onclick="app.closeModal('affirmation')" aria-label="Close"><i class="ti ti-x"></i></button>
+    <div class="aff-icon"><i class="ti ti-sparkles"></i></div>
+    <div class="aff-text" id="aff-text">You are more than this moment.</div>
+    <button class="btn-secondary" onclick="app.shuffleAffirmation()"><i class="ti ti-refresh"></i> Another one</button>
+  </div>
+</div>
 
 <script src="content.js"></script>
 <script src="app.js"></script>
