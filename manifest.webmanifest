@@ -1,13 +1,13 @@
 {
-  "name": "Reset — Job Search After Redundancy",
-  "short_name": "Reset",
-  "description": "Your personal playbook for navigating job search after redundancy in the UK.",
+  "name": "RESET — For navigating redundancy in the UK",
+  "short_name": "RESET",
+  "description": "Your personal playbook for navigating redundancy in the UK.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#FAFBFA",
-  "theme_color": "#00A87C",
+  "background_color": "#F5F7F6",
+  "theme_color": "#3CBF9E",
   "categories": ["productivity", "lifestyle", "health"],
   "icons": [
     {
