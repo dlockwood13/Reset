@@ -2,7 +2,7 @@
  * Service Worker — caches app shell for offline use.
  * Bump CACHE_VERSION when you ship updates so old caches are purged.
  */
-const CACHE_VERSION = 'reset-v1';
+const CACHE_VERSION = 'reset-v2';
 
 const ASSETS = [
   './',
@@ -14,13 +14,21 @@ const ASSETS = [
   './icons/icon-192.png',
   './icons/icon-512.png',
   './icons/icon-maskable-512.png',
-  'https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/tabler-icons.min.css'
+  'https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/tabler-icons.min.css',
+  'https://fonts.googleapis.com/css2?family=Lato:wght@400;500;700&family=Montserrat:wght@600;700&display=swap'
+];
+
+const RUNTIME_CACHE_HOSTS = [
+  self.location.origin,
+  'cdn.jsdelivr.net',
+  'fonts.googleapis.com',
+  'fonts.gstatic.com'
 ];
 
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_VERSION)
-      .then(cache => cache.addAll(ASSETS))
+      .then(cache => cache.addAll(ASSETS.filter(a => !a.startsWith('https://fonts.gstatic.com'))))
       .then(() => self.skipWaiting())
   );
 });
@@ -43,15 +51,12 @@ self.addEventListener('fetch', event => {
       if (cached) return cached;
 
       return fetch(event.request).then(response => {
-        if (response.ok &&
-            (event.request.url.startsWith(self.location.origin) ||
-             event.request.url.includes('tabler-icons'))) {
+        if (response.ok && RUNTIME_CACHE_HOSTS.some(h => event.request.url.includes(h))) {
           const clone = response.clone();
           caches.open(CACHE_VERSION).then(cache => cache.put(event.request, clone));
         }
         return response;
       }).catch(() => {
-        // Offline fallback: serve index.html for navigations
         if (event.request.mode === 'navigate') {
           return caches.match('./index.html');
         }
