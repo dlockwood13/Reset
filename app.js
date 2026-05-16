@@ -530,6 +530,13 @@ function slug(s) {
   return s.toLowerCase().replace(/[^a-z0-9]+/g, '_');
 }
 
+function greetingForTime() {
+  const h = new Date().getHours();
+  if (h < 12) return 'Good morning';
+  if (h < 18) return 'Good afternoon';
+  return 'Good evening';
+}
+
 function escapeHtml(s) {
   return String(s).replace(/[&<>"']/g, c => ({
     '&': '&amp;',
