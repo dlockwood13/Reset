@@ -1,1 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+<meta name="theme-color" content="#00A87C" />
+<meta name="description" content="Reset — a personal playbook for navigating job search after redundancy in the UK." />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="Reset" />
+<title>Reset — Job search after redundancy</title>
 
+<link rel="manifest" href="manifest.webmanifest" />
+<link rel="icon" type="image/png" href="icons/icon-192.png" />
+<link rel="apple-touch-icon" href="icons/icon-192.png" />
+
+<link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/tabler-icons.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="app">
+
+<!-- HOME -->
+<div id="page-home" class="page active">
+  <div class="top-bar">
+    <div class="greet" id="greet-text">Welcome back</div>
+    <div class="avatar" id="avatar" onclick="nav.go('settings')">R</div>
+  </div>
+
+  <div class="head">
+    <h1>Bounce back, <span class="accent">stronger.</span></h1>
+    <p>Your personal playbook to move through redundancy with clarity and momentum.</p>
+  </div>
+
+  <div class="hero">
+    <div class="hero-top">
+      <div>
+        <div class="hero-label">Your journey</div>
+        <div class="hero-title" id="hero-week">Getting started</div>
+      </div>
+      <div class="streak"><i class="ti ti-flame"></i> <span id="streak-count">0</span> day streak</div>
+    </div>
+    <div class="hero-bottom">
+      <div class="ring">
+        <svg width="90" height="90" viewBox="0 0 90 90" aria-hidden="true">
+          <circle cx="45" cy="45" r="38" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="7"/>
+          <circle id="hero-ring" cx="45" cy="45" r="38" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-dasharray="238.76" stroke-dashoffset="238.76"/>
+        </svg>
+        <div class="ring-center">
+          <div class="ring-pct" id="hero-pct">0%</div>
+          <div class="ring-sub">Complete</div>
+        </div>
+      </div>
+      <div class="stats">
+        <div class="stat-row"><div class="stat-label"><i class="ti ti-send"></i> Tasks done</div><div class="stat-val" id="stat-tasks">0</div></div>
+        <div class="stat-row"><div class="stat-label"><i class="ti ti-checkbox"></i> Today</div><div class="stat-val" id="stat-today">0 / 20</div></div>
+        <div class="stat-row"><div class="stat-label"><i class="ti ti-notebook"></i> Entries</div><div class="stat-val" id="stat-entries">0</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-h">
+    <div class="section-title">Your journey</div>
+  </div>
+
+  <div class="journey" id="journey-list"></div>
+
+  <div class="section-h" style="margin-top:8px">
+    <div class="section-title">Helpful resources</div>
+  </div>
+
+  <div class="res-list" id="res-list"></div>
+
+  <div style="padding:24px 20px;text-align:center;font-size:11px;color:var(--ink-3)">© DanLockwood.co.uk · 2026</div>
+</div>
+
+<!-- DETAIL (drilldown) -->
+<div id="page-detail" class="page sub-page">
+  <div class="sub-header">
+    <button class="back-btn" onclick="nav.back()" aria-label="Back"><i class="ti ti-chevron-left"></i></button>
+    <div class="sub-title" id="detail-title"></div>
+  </div>
+  <div class="detail-body" id="detail-body"></div>
+</div>
+
+<!-- CHECKLIST -->
+<div id="page-checklist" class="page">
+  <div class="cl-header">
+    <div class="cl-date" id="today-date">Today</div>
+    <div class="cl-h1">Daily checklist</div>
+  </div>
+  <div class="cl-prog">
+    <div class="cl-prog-top">
+      <div class="cl-prog-label">Today's progress</div>
+      <div class="cl-prog-count"><strong id="done-count">0</strong> / 20</div>
+    </div>
+    <div class="cl-bar-wrap"><div class="cl-bar" id="cl-bar" style="width:0%"></div></div>
+  </div>
+  <div id="checklist-sections"></div>
+  <button class="reset-btn" onclick="app.resetDaily()"><i class="ti ti-refresh"></i> Reset for tomorrow</button>
+</div>
+
+<!-- JOURNAL -->
+<div id="page-journal" class="page">
+  <div class="cl-header">
+    <div class="cl-date">Your space</div>
+    <div class="cl-h1">Journal</div>
+  </div>
+  <div class="jn-mood">
+    <div class="jn-mood-q">How are you feeling today?</div>
+    <div class="jn-mood-row" id="mood-row"></div>
+  </div>
+  <div class="jn-card">
+    <div class="jn-card-h"><i class="ti ti-edit"></i> Today's reflection</div>
+    <textarea class="jn-input" id="win-input" rows="4" placeholder="What went well today? What did you learn? Any wins worth celebrating?"></textarea>
+    <button class="btn-primary" onclick="app.addEntry()"><i class="ti ti-check"></i> Save entry</button>
+  </div>
+  <div class="entries-h">Past entries</div>
+  <div id="entries-list"></div>
+</div>
+
+<!-- SETTINGS -->
+<div id="page-settings" class="page sub-page">
+  <div class="sub-header">
+    <button class="back-btn" onclick="nav.back()" aria-label="Back"><i class="ti ti-chevron-left"></i></button>
+    <div class="sub-title">Settings</div>
+  </div>
+  <div style="padding:8px 0 20px">
+    <div class="set-section">
+      <div class="set-row" onclick="app.editName()">
+        <div class="set-icon" style="background:var(--mint-soft);color:var(--mint-deep)"><i class="ti ti-user"></i></div>
+        <div class="set-info"><div class="set-title">Your name</div><div class="set-sub" id="set-name">Not set</div></div>
+        <i class="ti ti-chevron-right set-arrow"></i>
+      </div>
+      <div class="set-row" onclick="app.installPrompt()">
+        <div class="set-icon" style="background:var(--lilac-soft);color:var(--lilac)"><i class="ti ti-device-mobile"></i></div>
+        <div class="set-info"><div class="set-title">Install app</div><div class="set-sub">Add to home screen for offline use</div></div>
+        <i class="ti ti-chevron-right set-arrow"></i>
+      </div>
+    </div>
+    <div class="set-section">
+      <div class="set-row" onclick="app.exportData()">
+        <div class="set-icon" style="background:var(--amber-soft);color:var(--amber-text)"><i class="ti ti-download"></i></div>
+        <div class="set-info"><div class="set-title">Export my data</div><div class="set-sub">Download as JSON backup</div></div>
+        <i class="ti ti-chevron-right set-arrow"></i>
+      </div>
+      <div class="set-row danger" onclick="app.clearAllData()">
+        <div class="set-icon"><i class="ti ti-trash"></i></div>
+        <div class="set-info"><div class="set-title">Clear all data</div><div class="set-sub">Reset progress, journal, and settings</div></div>
+        <i class="ti ti-chevron-right set-arrow"></i>
+      </div>
+    </div>
+    <div style="padding:16px 20px;text-align:center;font-size:11px;color:var(--ink-3)">
+      Reset · v1.0.0<br>All data stored locally on this device
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav-bar" aria-label="Main navigation">
+  <div class="nav-item active" data-page="home" onclick="nav.go('home')">
+    <div class="nav-icon"><i class="ti ti-home"></i></div>
+    <div class="nav-label">Home</div>
+  </div>
+  <div class="nav-item" data-page="checklist" onclick="nav.go('checklist')">
+    <div class="nav-icon"><i class="ti ti-checkbox"></i></div>
+    <div class="nav-label">Tasks</div>
+  </div>
+  <div class="nav-item" data-page="journal" onclick="nav.go('journal')">
+    <div class="nav-icon"><i class="ti ti-notebook"></i></div>
+    <div class="nav-label">Journal</div>
+  </div>
+</nav>
+
+</div>
+
+<!-- ONBOARDING -->
+<div class="onboard" id="onboard" style="display:none">
+  <div class="onboard-card">
+    <div class="onboard-icon"><i class="ti ti-sparkles"></i></div>
+    <h2>Welcome to Reset</h2>
+    <p>Your private playbook for navigating job search after redundancy. Everything stays on your device.</p>
+    <input type="text" id="onboard-name" placeholder="What should we call you?" autocomplete="given-name" />
+    <button class="btn-primary" onclick="app.completeOnboarding()" style="margin-top:0">Get started</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="content.js"></script>
+<script src="app.js"></script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('service-worker.js').catch(function(err) {
+      console.warn('SW registration failed:', err);
+    });
+  });
+}
+</script>
+</body>
+</html>
