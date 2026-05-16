@@ -520,6 +520,96 @@ const app = {
     store.save();
     document.getElementById('onboard').style.display = 'none';
     this.refreshHome();
+  },
+
+  /* ===== Mental health tools ===== */
+  _breathTimer: null,
+  _breathCycle: 0,
+  _breathTotal: 4,
+
+  startBreathing() {
+    document.getElementById('modal-breathing').style.display = 'flex';
+    this._breathCycle = 0;
+    this._runBreathStep('inhale');
+  },
+
+  _runBreathStep(phase) {
+    const stageEl = document.getElementById('breath-stage');
+    const circleEl = document.getElementById('breath-circle');
+    const cycleEl = document.getElementById('breath-cycle');
+    if (!stageEl || !circleEl) return;
+
+    cycleEl.textContent = `Cycle ${Math.min(this._breathCycle + 1, this._breathTotal)} of ${this._breathTotal}`;
+
+    const phases = {
+      inhale: { label: 'Breathe in', next: 'hold-in', duration: 4000 },
+      'hold-in': { label: 'Hold', next: 'exhale', duration: 4000 },
+      exhale: { label: 'Breathe out', next: 'hold-out', duration: 4000 },
+      'hold-out': { label: 'Hold', next: 'inhale', duration: 4000 }
+    };
+
+    const p = phases[phase];
+    stageEl.textContent = p.label;
+    circleEl.classList.remove('inhale', 'hold', 'exhale');
+    if (phase === 'inhale') circleEl.classList.add('inhale');
+    else if (phase === 'exhale') circleEl.classList.add('exhale');
+    else circleEl.classList.add('hold');
+
+    this._breathTimer = setTimeout(() => {
+      if (phase === 'hold-out') {
+        this._breathCycle += 1;
+        if (this._breathCycle >= this._breathTotal) {
+          stageEl.textContent = 'Well done';
+          cycleEl.textContent = 'Complete';
+          toast('Breathing complete');
+          this._breathTimer = setTimeout(() => this.stopBreathing(), 1600);
+          return;
+        }
+      }
+      this._runBreathStep(p.next);
+    }, p.duration);
+  },
+
+  stopBreathing() {
+    clearTimeout(this._breathTimer);
+    this._breathTimer = null;
+    document.getElementById('modal-breathing').style.display = 'none';
+    const circleEl = document.getElementById('breath-circle');
+    if (circleEl) circleEl.classList.remove('inhale', 'hold', 'exhale');
+  },
+
+  openGrounding() {
+    document.getElementById('modal-grounding').style.display = 'flex';
+  },
+
+  _affirmations: [
+    'You are more than this moment.',
+    'Your worth is not defined by your job title.',
+    "This is a transition, not a failure.",
+    'You have skills, experience and value that this setback cannot take away.',
+    'Rest is not falling behind. Rest is part of the work.',
+    "It's okay to feel lost. Just don't stay lost.",
+    'Every application sent is a sign of your courage.',
+    'You have weathered hard days before. You can weather this one too.',
+    'Asking for help is a strength, not a weakness.',
+    'The right opportunity is still ahead of you.',
+    'Your story is far from finished.',
+    'Small steps still count. Keep going.'
+  ],
+
+  openAffirmation() {
+    this.shuffleAffirmation();
+    document.getElementById('modal-affirmation').style.display = 'flex';
+  },
+
+  shuffleAffirmation() {
+    const idx = Math.floor(Math.random() * this._affirmations.length);
+    document.getElementById('aff-text').textContent = this._affirmations[idx];
+  },
+
+  closeModal(name) {
+    const el = document.getElementById('modal-' + name);
+    if (el) el.style.display = 'none';
   }
 };
 
