@@ -441,11 +441,11 @@ const app = {
     const greetSubEl = document.getElementById('greet-sub');
     if (store.data.name) {
       greetEl.textContent = greetingForTime() + ', ' + store.data.name;
-      const initials = store.data.name.trim().split(/\s+/).map(s => s[0]).slice(0, 2).join('').toUpperCase() || 'R';
+      const initials = store.data.name.trim().split(/\s+/).map(s => s[0]).slice(0, 2).join('').toUpperCase() || 'RE';
       document.getElementById('avatar').textContent = initials;
     } else {
       greetEl.textContent = greetingForTime();
-      document.getElementById('avatar').textContent = 'R';
+      document.getElementById('avatar').textContent = 'RE';
     }
     if (greetSubEl) {
       greetSubEl.textContent =
