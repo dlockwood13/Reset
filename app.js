@@ -114,6 +114,8 @@ const nav = {
     if (this.stack[this.stack.length - 1] !== page) this.stack.push(page);
 
     if (page === 'detail' && args) renderDetail(args);
+    if (page === 'phase' && args) renderPhase(args);
+    if (page === 'resources') renderHome();
     if (page === 'home') app.refreshHome();
     if (page === 'checklist') app.refreshChecklist();
     if (page === 'journal') app.refreshJournal();
@@ -151,8 +153,49 @@ function doneTasksForJourney(j) {
 }
 
 function renderHome() {
-  const list = document.getElementById('journey-list');
-  list.innerHTML = CONTENT.journey.map(j => {
+  const phasesEl = document.getElementById('phases-list');
+  if (phasesEl) {
+    phasesEl.innerHTML = CONTENT.phases.map(p => {
+      const journeys = p.journeyIds.map(id => CONTENT.journey.find(j => j.id === id)).filter(Boolean);
+      const total = journeys.reduce((s, j) => s + totalTasksForJourney(j), 0);
+      const done = journeys.reduce((s, j) => s + doneTasksForJourney(j), 0);
+      const pct = total ? Math.round((done / total) * 100) : 0;
+      return `<div class="phase-card" onclick="nav.go('phase','${p.id}')">
+        <div class="phase-icon ${p.color}"><i class="ti ${p.icon}"></i></div>
+        <div class="phase-info">
+          <div class="phase-title">${p.title}</div>
+          <div class="phase-sub">${p.sub}</div>
+          <div class="phase-progress">
+            <div class="phase-bar"><div class="phase-fill" style="width:${pct}%"></div></div>
+            <div class="phase-count">${done}/${total}</div>
+          </div>
+        </div>
+        <i class="ti ti-chevron-right phase-chev"></i>
+      </div>`;
+    }).join('');
+  }
+
+  // Resources page (rendered into the resources sub-page when present)
+  const res = document.getElementById('res-list');
+  if (res) {
+    res.innerHTML = CONTENT.resources.map(r => `<a class="res-row" href="${r.url}" target="_blank" rel="noopener noreferrer">
+      <div class="res-icon ${r.color}"><i class="ti ${r.icon}"></i></div>
+      <div class="res-info"><div class="res-name">${r.name}</div><div class="res-sub">${r.sub}</div></div>
+      <i class="ti ti-arrow-up-right" style="color:var(--ink-3);font-size:16px"></i>
+    </a>`).join('');
+  }
+}
+
+function renderPhase(phaseId) {
+  const p = CONTENT.phases.find(x => x.id === phaseId);
+  if (!p) return;
+
+  document.getElementById('phase-title').textContent = p.title;
+  document.getElementById('phase-intro').textContent = p.intro || '';
+
+  const list = document.getElementById('phase-items');
+  const journeys = p.journeyIds.map(id => CONTENT.journey.find(j => j.id === id)).filter(Boolean);
+  list.innerHTML = journeys.map(j => {
     const total = totalTasksForJourney(j);
     const done = doneTasksForJourney(j);
     const pct = total ? Math.round((done / total) * 100) : 0;
@@ -168,13 +211,6 @@ function renderHome() {
       <i class="ti ti-chevron-right j-chev"></i>
     </div>`;
   }).join('');
-
-  const res = document.getElementById('res-list');
-  res.innerHTML = CONTENT.resources.map(r => `<a class="res-row" href="${r.url}" target="_blank" rel="noopener noreferrer">
-    <div class="res-icon ${r.color}"><i class="ti ${r.icon}"></i></div>
-    <div class="res-info"><div class="res-name">${r.name}</div><div class="res-sub">${r.sub}</div></div>
-    <i class="ti ti-arrow-up-right" style="color:var(--ink-3);font-size:16px"></i>
-  </a>`).join('');
 }
 
 function renderDetail(id) {
@@ -392,7 +428,7 @@ const app = {
     document.getElementById('stat-tasks').textContent = done;
     const dailyTotal = this.totalDaily();
     const dailyDone = Object.values(store.data.dailyTasks).filter(Boolean).length;
-    document.getElementById('stat-today').textContent = dailyDone + ' / ' + dailyTotal;
+    document.getElementById('stat-today').textContent = dailyDone + '/' + dailyTotal;
     document.getElementById('stat-entries').textContent = store.data.entries.length;
 
     document.getElementById('streak-count').textContent = store.data.streak;
@@ -401,13 +437,21 @@ const app = {
       pct < 100 ? 'In progress' :
       'Journey complete';
 
+    const greetEl = document.getElementById('greet-text');
+    const greetSubEl = document.getElementById('greet-sub');
     if (store.data.name) {
-      document.getElementById('greet-text').textContent = 'Hi, ' + store.data.name;
+      greetEl.textContent = greetingForTime() + ', ' + store.data.name;
       const initials = store.data.name.trim().split(/\s+/).map(s => s[0]).slice(0, 2).join('').toUpperCase() || 'R';
       document.getElementById('avatar').textContent = initials;
     } else {
-      document.getElementById('greet-text').textContent = 'Welcome';
+      greetEl.textContent = greetingForTime();
       document.getElementById('avatar').textContent = 'R';
+    }
+    if (greetSubEl) {
+      greetSubEl.textContent =
+        pct === 0 ? "Let's get started" :
+        pct < 100 ? "Keep the momentum going" :
+        "You've done it. Time to celebrate.";
     }
   },
 
