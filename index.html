@@ -4,32 +4,330 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
 <meta name="theme-color" content="#3CBF9E" />
-<meta name="description" content="RESET — a personal playbook for navigating redundancy in the UK." />
+<meta name="description" content="RESET — a private playbook for navigating redundancy in the UK." />
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 <meta name="apple-mobile-web-app-title" content="RESET" />
 <title>RESET — For navigating redundancy in the UK</title>
 
-<link rel="manifest" href="manifest.webmanifest" />
-<link rel="icon" type="image/png" href="icons/icon-192.png" />
-<link rel="apple-touch-icon" href="icons/icon-192.png" />
+<link rel="icon" type="image/svg+xml" href='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><rect width="512" height="512" rx="112" fill="%233CBF9E"/><g fill="%23FFFFFF" opacity="0.95"><polygon points="256,72 274,200 256,184 238,200"/><polygon points="256,440 274,312 256,328 238,312"/><polygon points="440,256 312,274 328,256 312,238"/><polygon points="72,256 200,274 184,256 200,238"/></g><rect x="186" y="156" width="140" height="200" rx="4" fill="%23FFFFFF"/><path d="M 256 156 L 326 176 L 326 356 L 256 336 Z" fill="%232EA383"/><circle cx="276" cy="256" r="5" fill="%23FFFFFF"/><circle cx="256" cy="256" r="10" fill="%23FFFFFF" opacity="0.4"/></svg>' />
+<link rel="apple-touch-icon" href='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><rect width="512" height="512" rx="112" fill="%233CBF9E"/><g fill="%23FFFFFF" opacity="0.95"><polygon points="256,72 274,200 256,184 238,200"/><polygon points="256,440 274,312 256,328 238,312"/><polygon points="440,256 312,274 328,256 312,238"/><polygon points="72,256 200,274 184,256 200,238"/></g><rect x="186" y="156" width="140" height="200" rx="4" fill="%23FFFFFF"/><path d="M 256 156 L 326 176 L 326 356 L 256 336 Z" fill="%232EA383"/><circle cx="276" cy="256" r="5" fill="%23FFFFFF"/><circle cx="256" cy="256" r="10" fill="%23FFFFFF" opacity="0.4"/></svg>' />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;500;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet" />
 <link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/tabler-icons.min.css" rel="stylesheet" />
-<link rel="stylesheet" href="styles.css?v=4" />
+
+<style>
+:root{
+  --teal:#3CBF9E;--teal-deep:#2EA383;--teal-dark:#25856B;--teal-soft:#E4F6F0;--teal-tint:#F1FBF7;
+  --charcoal:#333;--ink-1:#333;--ink-2:#4A4A4A;--ink-3:#8A9591;
+  --coral:#E76F61;--coral-soft:#FBEEEB;--amber:#E8A547;--amber-soft:#FBF1DE;--amber-text:#B07A1A;
+  --lilac:#7A6CD9;--lilac-soft:#ECEAF8;
+  --surface:#fff;--surface-tint:#F5F7F6;
+  --line:rgba(51,51,51,.08);--line-strong:rgba(51,51,51,.14);
+  --shadow-sm:0 1px 2px rgba(51,51,51,.05);--shadow-md:0 4px 16px rgba(51,51,51,.07);
+  --r-sm:10px;--r-md:16px;--r-lg:22px;
+  --font-heading:'Montserrat',-apple-system,BlinkMacSystemFont,sans-serif;
+  --font-body:'Lato',-apple-system,BlinkMacSystemFont,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root{--ink-1:#F5F7F6;--ink-2:#C8D2CE;--ink-3:#8A9591;--teal-soft:rgba(60,191,158,.14);--teal-tint:rgba(60,191,158,.06);--coral-soft:rgba(231,111,97,.16);--amber-soft:rgba(232,165,71,.16);--amber-text:#E8A547;--lilac-soft:rgba(122,108,217,.16);--surface:#1F2422;--surface-tint:#161A18;--line:rgba(255,255,255,.08);--line-strong:rgba(255,255,255,.14)}
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{background:var(--surface-tint);color:var(--ink-1);font-family:var(--font-body);font-weight:400;-webkit-font-smoothing:antialiased;font-size:16px;line-height:1.5}
+body{min-height:100vh;min-height:100dvh}
+h1,h2,h3,h4,h5,h6{font-family:var(--font-heading);font-weight:700;color:var(--ink-1);letter-spacing:-.3px;line-height:1.2}
+button{font-family:var(--font-body);color:inherit;cursor:pointer;border:none;background:none}
+input,textarea{font-family:var(--font-body);color:var(--ink-1)}
+a{color:var(--teal-deep);text-decoration:none}
+.app{max-width:430px;margin:0 auto;padding-bottom:96px;padding-top:env(safe-area-inset-top);min-height:100vh}
+.page{display:none;animation:fade .3s ease-out}.page.active{display:block}
+.sub-page{display:none;animation:slide .25s ease-out}.sub-page.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+@keyframes slide{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:translateX(0)}}
+
+.home-shell{display:flex;flex-direction:column;min-height:calc(100dvh - 96px);padding-bottom:12px}
+.top-bar{padding:14px 20px 6px;display:flex;align-items:center;justify-content:space-between}
+.top-bar.compact{padding:16px 20px 8px}
+.greet{font-size:13px;color:var(--ink-3);font-weight:500;letter-spacing:.1px}
+.greet-sub{font-family:var(--font-heading)!important;font-size:22px!important;font-weight:700!important;color:#2EA383!important;letter-spacing:-.4px;margin-top:4px;line-height:1.15}
+.tagline{font-size:12px;color:var(--ink-3);margin-top:6px;font-weight:400;letter-spacing:.1px;font-style:italic}
+.avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--teal-deep));color:#fff;font-size:12px;font-weight:700;font-family:var(--font-heading);letter-spacing:.5px;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-sm);cursor:pointer}
+
+.hero{margin:0 20px 14px;background-color:#3CBF9E;background-image:linear-gradient(140deg,#3CBF9E 0%,#2EA383 100%);border-radius:var(--r-lg);padding:20px;color:#fff!important;position:relative;overflow:hidden;box-shadow:0 12px 28px -8px rgba(60,191,158,.45)}
+.hero.compact{padding:18px 20px 20px;margin-bottom:16px}
+.hero,.hero .hero-label,.hero .hero-title,.hero .ring-pct,.hero .ring-sub,.hero .mini-val,.hero .mini-lbl,.hero .streak,.hero #hero-week,.hero #hero-pct,.hero #stat-tasks,.hero #stat-today,.hero #stat-entries,.hero #streak-count{color:#fff!important}
+.hero::before{content:'';position:absolute;top:-50%;right:-20%;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.22),transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-40%;left:-10%;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.12),transparent 70%);pointer-events:none}
+.hero-top{display:flex;justify-content:space-between;align-items:center;position:relative;z-index:1;margin-bottom:16px}
+.hero-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;opacity:.9;margin-bottom:4px}
+.hero-title{font-family:var(--font-heading);font-size:19px;font-weight:700;letter-spacing:-.3px}
+.streak{background:rgba(255,255,255,.22);border:.5px solid rgba(255,255,255,.3);backdrop-filter:blur(8px);border-radius:14px;padding:6px 12px;display:flex;align-items:center;gap:5px;font-size:13px;font-weight:700;font-family:var(--font-heading)}
+.streak i{font-size:14px}
+.hero-bottom{display:flex;align-items:center;gap:14px;position:relative;z-index:1}
+.ring{position:relative;width:80px;height:80px;flex-shrink:0}
+.ring svg{transform:rotate(-90deg);width:80px;height:80px}
+.ring-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.ring-pct{font-family:var(--font-heading);font-size:22px;font-weight:700;letter-spacing:-.5px;line-height:1}
+.ring-sub{font-size:10px;opacity:.9;text-transform:uppercase;letter-spacing:.6px;margin-top:2px;font-weight:600}
+.hero-mini-stats{flex:1;display:flex;justify-content:space-around;gap:4px}
+.mini-stat{text-align:center;flex:1}
+.mini-val{font-family:var(--font-heading);font-size:22px;font-weight:700;letter-spacing:-.4px;line-height:1}
+.mini-lbl{font-size:10.5px;opacity:.85;margin-top:6px;text-transform:uppercase;letter-spacing:.6px;font-weight:700}
+
+.section-h{display:flex;justify-content:space-between;align-items:baseline;padding:8px 20px 12px}
+.section-title{font-family:var(--font-heading);font-size:18px;font-weight:700;letter-spacing:-.3px}
+
+.phases{padding:0 20px;display:flex;flex-direction:column;gap:10px;flex:1}
+.phase-card,.j-row{background:var(--surface);border:.5px solid var(--line);border-radius:var(--r-md);padding:14px;display:flex;align-items:center;gap:14px;cursor:pointer;box-shadow:var(--shadow-sm);transition:transform .15s}
+.j-row{margin-bottom:10px}
+.phase-card:active,.j-row:active{transform:scale(.98)}
+.phase-icon,.j-icon{width:46px;height:46px;border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.phase-icon i,.j-icon i{font-size:22px}
+.phase-icon.mint,.j-icon.mint{background:var(--teal-soft);color:var(--teal-deep)}
+.phase-icon.coral,.j-icon.coral{background:var(--coral-soft);color:var(--coral)}
+.phase-icon.amber,.j-icon.amber{background:var(--amber-soft);color:var(--amber-text)}
+.phase-icon.lilac,.j-icon.lilac{background:var(--lilac-soft);color:var(--lilac)}
+.phase-info,.j-info{flex:1;min-width:0}
+.phase-title,.j-title{font-family:var(--font-heading);font-size:16px;font-weight:700;letter-spacing:-.2px;margin-bottom:3px}
+.phase-sub,.j-meta{font-size:12.5px;color:var(--ink-3);margin-bottom:6px}
+.j-meta{display:flex;align-items:center;gap:8px;margin-bottom:0}
+.j-dot{width:3px;height:3px;border-radius:50%;background:var(--ink-3)}
+.j-mini{display:flex;align-items:center;gap:6px}
+.j-mini-bar{width:40px;height:4px;background:var(--line-strong);border-radius:4px;overflow:hidden}
+.j-mini-fill{height:100%;background:var(--teal);border-radius:4px;transition:width .4s}
+.phase-progress{display:flex;align-items:center;gap:8px}
+.phase-bar{flex:1;height:5px;background:var(--line-strong);border-radius:5px;overflow:hidden;max-width:140px}
+.phase-fill{height:100%;background:var(--teal);border-radius:5px;transition:width .4s}
+.phase-count,.j-mini span{font-size:11.5px;color:var(--ink-3);font-weight:600;white-space:nowrap}
+.phase-chev,.j-chev{font-size:18px;color:var(--ink-3);flex-shrink:0}
+
+.sub-header{display:flex;align-items:center;gap:8px;padding:14px 12px 6px}
+.back-btn{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--ink-1);transition:background .15s}
+.back-btn:active{background:var(--line)}
+.back-btn i{font-size:22px}
+.sub-title{font-family:var(--font-heading);font-size:18px;font-weight:700;letter-spacing:-.3px;flex:1}
+
+.phase-body{padding:4px 0 24px}
+.phase-intro{padding:0 20px 14px;font-size:14px;color:var(--ink-2);line-height:1.55}
+
+.detail-body{padding:8px 20px 24px}
+.quote{background:var(--teal-tint);border-radius:var(--r-sm);padding:14px 16px;margin-bottom:16px;border-left:3px solid var(--teal);font-size:14px;color:var(--ink-2);line-height:1.55;font-style:italic}
+.quote .q{color:var(--teal);font-family:Georgia,serif;font-size:22px;line-height:0;vertical-align:-6px;margin-right:2px;font-style:normal}
+.sub-h{font-family:var(--font-heading);font-size:11px;font-weight:700;color:var(--teal-deep);margin:18px 0 8px;text-transform:uppercase;letter-spacing:.8px;display:flex;align-items:center;gap:6px}
+.sub-h::before{content:'';width:14px;height:1.5px;background:var(--teal);border-radius:2px}
+.sub-h:first-child{margin-top:4px}
+.task{display:flex;align-items:flex-start;gap:12px;padding:11px 0;border-bottom:.5px solid var(--line)}
+.task:last-child{border-bottom:none}
+.cbox{width:22px;height:22px;border-radius:8px;border:1.5px solid var(--line-strong);flex-shrink:0;margin-top:1px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;background:transparent}
+.cbox.checked{background:var(--teal);border-color:var(--teal);transform:scale(.92)}
+.cbox.checked::after{content:'';width:5px;height:9px;border:2px solid #fff;border-top:none;border-left:none;transform:rotate(45deg) translateY(-1px)}
+.ctext{font-size:14px;color:var(--ink-1);line-height:1.5;flex:1;transition:all .2s}
+.ctext.done{text-decoration:line-through;color:var(--ink-3)}
+.chip-row{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.chip{display:inline-flex;align-items:center;gap:5px;background:var(--surface-tint);border:.5px solid var(--line);font-size:12px;padding:6px 11px;border-radius:20px;font-weight:600;color:var(--ink-1)}
+.chip i{font-size:13px;color:var(--teal-deep)}
+.target-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.target{background:linear-gradient(160deg,var(--teal-tint),var(--teal-soft));border-radius:var(--r-sm);padding:14px 8px;text-align:center;border:.5px solid var(--line)}
+.target-num{font-family:var(--font-heading);font-size:26px;font-weight:700;color:var(--teal-deep);letter-spacing:-.8px;line-height:1}
+.target-label{font-size:10.5px;color:var(--ink-2);margin-top:6px;font-weight:700;text-transform:uppercase;letter-spacing:.4px}
+.star-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:10px 0}
+.star{background:var(--surface-tint);border:.5px solid var(--line);border-radius:var(--r-sm);padding:12px}
+.star-head{display:flex;align-items:center;gap:8px;margin-bottom:4px}
+.star-letter{width:24px;height:24px;border-radius:8px;background:var(--teal);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-heading);font-weight:700;font-size:13px}
+.star-name{font-family:var(--font-heading);font-size:13px;font-weight:700}
+.star-desc{font-size:11.5px;color:var(--ink-2);line-height:1.45}
+.template{background:var(--lilac-soft);border-radius:var(--r-sm);padding:14px;font-size:13px;line-height:1.65;color:var(--ink-1);position:relative}
+.template-copy{display:inline-flex;align-items:center;gap:5px;background:var(--surface);color:var(--lilac);font-size:11px;font-weight:700;padding:5px 10px;border-radius:14px;margin-top:10px;border:.5px solid var(--line);cursor:pointer}
+.cert-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:.5px solid var(--line)}
+.cert-row:last-child{border-bottom:none}
+.cert-badge{width:36px;height:36px;border-radius:10px;background:var(--amber-soft);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.cert-badge i{font-size:18px;color:var(--amber-text)}
+.cert-name{font-family:var(--font-heading);font-size:13.5px;font-weight:700;line-height:1.3}
+.cert-plat{font-size:11.5px;color:var(--ink-3);margin-top:2px}
+
+.support-card{margin:14px 20px 0;padding:14px;background:linear-gradient(135deg,var(--teal-tint) 0%,var(--coral-soft) 100%);border:.5px solid var(--line);border-radius:var(--r-md);display:flex;align-items:center;gap:14px;cursor:pointer;width:calc(100% - 40px);text-align:left;box-shadow:var(--shadow-sm);transition:transform .15s}
+.support-card:active{transform:scale(.98)}
+.support-icon{width:44px;height:44px;border-radius:14px;background:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--coral);box-shadow:0 2px 6px rgba(231,111,97,.18)}
+.support-icon i{font-size:22px}
+@media (prefers-color-scheme:dark){.support-icon{background:var(--surface)}}
+.support-text{flex:1;min-width:0}
+.support-title{font-family:var(--font-heading);font-size:15px;font-weight:700;letter-spacing:-.2px;margin-bottom:2px}
+.support-sub{font-size:12.5px;color:var(--ink-2)}
+.support-chev{font-size:18px;color:var(--ink-3);flex-shrink:0}
+.support-body{padding:4px 0 32px}
+.support-banner{margin:4px 20px 18px;padding:12px 14px;background:var(--teal-tint);border:.5px solid var(--line);border-radius:var(--r-md);display:flex;gap:10px;font-size:13.5px;color:var(--ink-2);line-height:1.55}
+.support-banner i{color:var(--teal-deep);font-size:18px;flex-shrink:0;margin-top:1px}
+.support-section-h{padding:8px 20px;font-family:var(--font-heading);font-size:11px;font-weight:700;color:var(--teal-deep);text-transform:uppercase;letter-spacing:.8px}
+.support-section{margin:0 20px 16px;background:var(--surface);border:.5px solid var(--line);border-radius:var(--r-md);overflow:hidden;box-shadow:var(--shadow-sm)}
+.crisis-row{display:flex;align-items:center;gap:12px;padding:14px 16px;border-bottom:.5px solid var(--line);text-decoration:none;color:inherit;cursor:pointer}
+.crisis-row:last-child{border-bottom:none}
+.crisis-row:active{background:var(--surface-tint)}
+.crisis-icon{width:40px;height:40px;border-radius:12px;background:var(--coral-soft);color:var(--coral);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.crisis-icon i{font-size:19px}
+.crisis-info{flex:1;min-width:0}
+.crisis-name{font-family:var(--font-heading);font-size:14px;font-weight:700;letter-spacing:-.1px}
+.crisis-sub{font-size:12px;color:var(--ink-3);margin-top:2px}
+.crisis-num{font-family:var(--font-heading);font-size:13px;font-weight:700;color:var(--coral);white-space:nowrap}
+.tool-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;padding:0 20px;margin-bottom:16px}
+.tool-card{background:var(--surface);border:.5px solid var(--line);border-radius:var(--r-md);padding:16px 14px;display:flex;flex-direction:column;align-items:flex-start;gap:10px;cursor:pointer;box-shadow:var(--shadow-sm);text-align:left;transition:transform .15s;width:100%}
+.tool-card:active{transform:scale(.97)}
+.tool-icon{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center}
+.tool-icon i{font-size:20px}
+.tool-icon.mint{background:var(--teal-soft);color:var(--teal-deep)}
+.tool-icon.coral{background:var(--coral-soft);color:var(--coral)}
+.tool-icon.amber{background:var(--amber-soft);color:var(--amber-text)}
+.tool-icon.lilac{background:var(--lilac-soft);color:var(--lilac)}
+.tool-title{font-family:var(--font-heading);font-size:14px;font-weight:700}
+.tool-sub{font-size:12px;color:var(--ink-3);margin-top:-4px}
+.ongoing-row{display:flex;align-items:center;gap:12px;padding:14px 16px;border-bottom:.5px solid var(--line);text-decoration:none;color:inherit;cursor:pointer}
+.ongoing-row:last-child{border-bottom:none}
+.ongoing-icon{width:36px;height:36px;border-radius:10px;background:var(--teal-soft);color:var(--teal-deep);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ongoing-icon i{font-size:18px}
+.ongoing-info{flex:1}
+.ongoing-name{font-family:var(--font-heading);font-size:14px;font-weight:700}
+.ongoing-sub{font-size:12px;color:var(--ink-3);margin-top:2px}
+.ongoing-arrow{color:var(--ink-3);font-size:16px}
+.support-foot{padding:8px 20px;text-align:center;font-size:12.5px;color:var(--ink-3);line-height:1.5}
+.support-foot a{color:var(--coral);font-weight:700}
+
+.res-list{padding:0 20px}
+.res-row{display:flex;align-items:center;gap:14px;background:var(--surface);border:.5px solid var(--line);border-radius:var(--r-md);padding:14px;margin-bottom:8px;cursor:pointer;box-shadow:var(--shadow-sm);text-decoration:none;color:inherit;transition:transform .15s}
+.res-row:active{transform:scale(.99)}
+.res-icon{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.res-icon i{font-size:20px}
+.res-icon.mint{background:var(--teal-soft);color:var(--teal-deep)}
+.res-icon.coral{background:var(--coral-soft);color:var(--coral)}
+.res-icon.amber{background:var(--amber-soft);color:var(--amber-text)}
+.res-icon.lilac{background:var(--lilac-soft);color:var(--lilac)}
+.res-info{flex:1;min-width:0}
+.res-name{font-family:var(--font-heading);font-size:14px;font-weight:700}
+.res-sub{font-size:12px;color:var(--ink-3);margin-top:2px}
+
+.cl-header{padding:14px 20px 8px}
+.cl-date{font-size:12px;color:var(--ink-3);font-weight:700;text-transform:uppercase;letter-spacing:.6px}
+.cl-h1{font-family:var(--font-heading);font-size:26px;font-weight:700;letter-spacing:-.5px;margin-top:2px}
+.cl-prog{margin:0 20px 16px;background:var(--surface);border:.5px solid var(--line);border-radius:var(--r-md);padding:18px;box-shadow:var(--shadow-sm)}
+.cl-prog-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.cl-prog-label{font-size:13px;color:var(--ink-2);font-weight:600}
+.cl-prog-count{font-family:var(--font-heading);font-size:13px;font-weight:700}
+.cl-prog-count strong{color:var(--teal-deep);font-size:17px}
+.cl-bar-wrap{background:var(--surface-tint);border-radius:20px;height:8px;overflow:hidden;border:.5px solid var(--line)}
+.cl-bar{height:100%;background:linear-gradient(90deg,var(--teal),var(--teal-deep));border-radius:20px;transition:width .4s cubic-bezier(.34,1.56,.64,1)}
+.cl-section{margin:0 20px 12px;background:var(--surface);border:.5px solid var(--line);border-radius:var(--r-md);overflow:hidden;box-shadow:var(--shadow-sm)}
+.cl-sec-head{display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer}
+.cl-sec-icon{width:32px;height:32px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.cl-sec-icon i{font-size:16px}
+.cl-sec-info{flex:1}
+.cl-sec-title{font-family:var(--font-heading);font-size:14px;font-weight:700}
+.cl-sec-sub{font-size:12px;color:var(--ink-3);margin-top:1px}
+.cl-sec-body{padding:0 16px 12px;display:none}
+.cl-sec-body.open{display:block}
+.cl-chev{font-size:18px;color:var(--ink-3);transition:transform .25s}
+.cl-chev.open{transform:rotate(180deg);color:var(--teal-deep)}
+.reset-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:calc(100% - 40px);margin:8px 20px 0;padding:14px;background:var(--surface);border:.5px solid var(--line);border-radius:var(--r-md);color:var(--ink-2);font-size:14px;font-weight:700;box-shadow:var(--shadow-sm)}
+.reset-btn i{font-size:16px}
+
+.jn-mood{margin:0 20px 16px;background:var(--surface);border:.5px solid var(--line);border-radius:var(--r-md);padding:18px;box-shadow:var(--shadow-sm)}
+.jn-mood-q{font-family:var(--font-heading);font-size:15px;font-weight:700;margin-bottom:14px}
+.jn-mood-row{display:flex;justify-content:space-between;gap:6px}
+.mb{display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px 4px;border-radius:14px;flex:1;cursor:pointer;transition:all .2s}
+.mb:active{transform:scale(.92)}
+.mb.sel{background:var(--teal-soft);transform:scale(1.05)}
+.mb-emoji{font-size:28px;filter:grayscale(.3);transition:filter .2s}
+.mb.sel .mb-emoji{filter:none}
+.mb-label{font-size:11px;color:var(--ink-3);font-weight:600}
+.mb.sel .mb-label{color:var(--teal-deep);font-weight:700}
+.jn-card{margin:0 20px 16px;background:var(--surface);border:.5px solid var(--line);border-radius:var(--r-md);padding:18px;box-shadow:var(--shadow-sm)}
+.jn-card-h{font-family:var(--font-heading);font-size:14px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.jn-card-h i{color:var(--teal-deep);font-size:18px}
+.jn-input{width:100%;border:.5px solid var(--line);border-radius:var(--r-sm);padding:12px 14px;font-size:14px;background:var(--surface-tint);resize:none;line-height:1.55;outline:none;transition:all .2s}
+.jn-input:focus{border-color:var(--teal);background:var(--surface)}
+.btn-primary{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;background:var(--teal-deep);color:#fff;border-radius:var(--r-sm);padding:13px;font-family:var(--font-heading);font-size:14px;font-weight:700;letter-spacing:.2px;margin-top:10px;box-shadow:0 4px 12px rgba(46,163,131,.25);transition:transform .15s}
+.btn-primary:active{transform:scale(.98)}
+.entries-h{padding:8px 20px;font-family:var(--font-heading);font-size:11px;font-weight:700;color:var(--teal-deep);text-transform:uppercase;letter-spacing:.8px}
+.entry{margin:0 20px 10px;background:var(--surface);border:.5px solid var(--line);border-radius:var(--r-md);padding:16px;box-shadow:var(--shadow-sm);position:relative}
+.entry::before{content:'';position:absolute;left:0;top:16px;bottom:16px;width:3px;background:var(--teal);border-radius:0 4px 4px 0}
+.entry-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.entry-date{font-size:12px;color:var(--ink-3);font-weight:600}
+.entry-mood{font-family:var(--font-heading);font-size:12.5px;background:var(--surface-tint);padding:3px 10px;border-radius:12px;border:.5px solid var(--line);font-weight:700}
+.entry-text{font-size:14px;line-height:1.55}
+.entry-empty{margin:0 20px;padding:32px 20px;text-align:center;color:var(--ink-3);font-size:13px;border:1px dashed var(--line-strong);border-radius:var(--r-md)}
+
+.set-section{margin:0 20px 16px;background:var(--surface);border:.5px solid var(--line);border-radius:var(--r-md);overflow:hidden;box-shadow:var(--shadow-sm)}
+.set-row{display:flex;align-items:center;gap:14px;padding:14px 16px;border-bottom:.5px solid var(--line);cursor:pointer}
+.set-row:last-child{border-bottom:none}
+.set-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.set-icon i{font-size:18px}
+.set-info{flex:1}
+.set-title{font-family:var(--font-heading);font-size:14px;font-weight:700}
+.set-sub{font-size:12px;color:var(--ink-3);margin-top:2px}
+.set-arrow{color:var(--ink-3);font-size:18px}
+.danger{color:var(--coral)}
+.danger .set-icon{background:var(--coral-soft);color:var(--coral)}
+.danger .set-title{color:var(--coral)}
+
+.nav-bar{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;background:rgba(255,255,255,.88);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border-top:.5px solid var(--line);display:flex;padding:8px 16px calc(22px + env(safe-area-inset-bottom));z-index:50}
+@media (prefers-color-scheme:dark){.nav-bar{background:rgba(31,36,34,.88)}}
+.nav-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;padding:6px 0;cursor:pointer;transition:transform .15s}
+.nav-item:active{transform:scale(.92)}
+.nav-icon{width:32px;height:32px;border-radius:10px;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.nav-icon i{font-size:20px;color:var(--ink-3);transition:color .2s}
+.nav-item.active .nav-icon{background:var(--teal-soft)}
+.nav-item.active .nav-icon i{color:var(--teal-deep)}
+.nav-label{font-size:11px;color:var(--ink-3);font-weight:600}
+.nav-item.active .nav-label{color:var(--teal-deep);font-weight:700}
+
+.onboard{position:fixed;inset:0;background:rgba(51,51,51,.45);backdrop-filter:blur(8px);z-index:100;display:flex;align-items:center;justify-content:center;padding:20px}
+.onboard-card{background:var(--surface);border-radius:var(--r-lg);padding:36px 24px 28px;max-width:380px;width:100%;text-align:center;box-shadow:0 24px 48px rgba(0,0,0,.2)}
+.onboard-logo{font-family:var(--font-heading);font-weight:700;font-size:44px;letter-spacing:4px;color:var(--teal);line-height:1;margin-bottom:6px}
+.onboard-tagline{font-style:italic;font-size:13px;color:var(--teal-deep);font-weight:600;letter-spacing:.3px;margin-bottom:20px}
+.onboard p{font-size:14px;color:var(--ink-2);line-height:1.55;margin-bottom:20px}
+.onboard input{width:100%;border:1px solid var(--line-strong);border-radius:var(--r-sm);padding:12px 14px;font-size:15px;background:var(--surface-tint);outline:none;margin-bottom:16px;color:var(--ink-1)}
+.onboard input:focus{border-color:var(--teal)}
+
+.modal{position:fixed;inset:0;background:rgba(51,51,51,.55);backdrop-filter:blur(10px);z-index:150;display:flex;align-items:center;justify-content:center;padding:20px;animation:fade .25s}
+.modal-card{background:var(--surface);border-radius:var(--r-lg);padding:32px 24px;max-width:380px;width:100%;text-align:center;box-shadow:0 24px 48px rgba(0,0,0,.25);position:relative}
+.modal-close{position:absolute;top:12px;right:12px;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--ink-2);cursor:pointer}
+.modal-close:active{background:var(--surface-tint)}
+.modal-close i{font-size:20px}
+.modal-title{font-family:var(--font-heading);font-size:20px;font-weight:700;letter-spacing:-.3px;margin-bottom:6px}
+.modal-intro{font-size:13.5px;color:var(--ink-2);line-height:1.55;margin-bottom:16px}
+.breath-stage{font-family:var(--font-heading);font-size:22px;font-weight:700;letter-spacing:-.3px;color:var(--teal-deep);margin-bottom:24px;min-height:30px}
+.breath-circle{width:180px;height:180px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--teal-deep));margin:0 auto 24px;transition:transform 4s cubic-bezier(.4,0,.6,1);transform:scale(.5);box-shadow:0 12px 32px rgba(60,191,158,.3)}
+.breath-circle.inhale{transform:scale(1)}
+.breath-circle.hold{transform:scale(1)}
+.breath-circle.exhale{transform:scale(.5)}
+.breath-cycle{font-size:12.5px;color:var(--ink-3);font-weight:700;text-transform:uppercase;letter-spacing:.6px}
+.grounding-card{text-align:left;padding:28px 20px}
+.grounding-card .modal-title,.grounding-card .modal-intro{text-align:left}
+.ground-step{display:flex;gap:14px;padding:12px 0;border-bottom:.5px solid var(--line);align-items:flex-start}
+.ground-step:last-of-type{border-bottom:none}
+.ground-num{width:36px;height:36px;border-radius:12px;background:var(--teal-soft);color:var(--teal-deep);font-family:var(--font-heading);font-weight:700;font-size:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ground-text{font-size:13.5px;line-height:1.5}
+.ground-text strong{font-family:var(--font-heading);font-weight:700}
+.ground-text span{color:var(--ink-3);font-size:12.5px}
+.affirmation-card{padding:36px 24px 28px}
+.aff-icon{width:56px;height:56px;border-radius:18px;background:linear-gradient(135deg,var(--lilac),#5C4FE0);color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 18px}
+.aff-icon i{font-size:28px}
+.aff-text{font-family:var(--font-heading);font-size:19px;font-weight:600;letter-spacing:-.3px;line-height:1.45;margin-bottom:24px;font-style:italic}
+.btn-secondary{display:inline-flex;align-items:center;gap:6px;background:var(--surface-tint);border:.5px solid var(--line-strong);color:var(--ink-1);border-radius:var(--r-sm);padding:10px 18px;font-size:13.5px;font-weight:700;cursor:pointer}
+.btn-secondary i{font-size:15px}
+
+.toast{position:fixed;bottom:110px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--ink-1);color:var(--surface);padding:10px 18px;border-radius:20px;font-size:13px;font-weight:600;z-index:200;opacity:0;transition:all .3s;pointer-events:none}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+</style>
 </head>
 <body>
 <div class="app">
 
-<!-- HOME -->
 <div id="page-home" class="page active">
   <div class="home-shell">
     <div class="top-bar compact">
       <div>
         <div class="greet" id="greet-text">Welcome</div>
-        <div class="greet-sub" id="greet-sub">Let's keep moving</div>
+        <div class="greet-sub" id="greet-sub">Let's get started</div>
         <div class="tagline">For navigating redundancy in the UK</div>
       </div>
       <div class="avatar" id="avatar" onclick="nav.go('settings')">R</div>
@@ -45,13 +343,11 @@
       </div>
       <div class="hero-bottom">
         <div class="ring">
-          <svg width="76" height="76" viewBox="0 0 90 90" aria-hidden="true">
+          <svg width="80" height="80" viewBox="0 0 90 90" aria-hidden="true">
             <circle cx="45" cy="45" r="38" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="7"/>
             <circle id="hero-ring" cx="45" cy="45" r="38" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-dasharray="238.76" stroke-dashoffset="238.76"/>
           </svg>
-          <div class="ring-center">
-            <div class="ring-pct" id="hero-pct">0%</div>
-          </div>
+          <div class="ring-center"><div class="ring-pct" id="hero-pct">0%</div></div>
         </div>
         <div class="hero-mini-stats">
           <div class="mini-stat"><div class="mini-val" id="stat-tasks">0</div><div class="mini-lbl">Done</div></div>
@@ -63,7 +359,7 @@
 
     <div class="phases" id="phases-list"></div>
 
-    <button class="support-card" onclick="nav.go('support')" aria-label="Mental health support">
+    <button class="support-card" onclick="nav.go('support')">
       <div class="support-icon"><i class="ti ti-heart-handshake"></i></div>
       <div class="support-text">
         <div class="support-title">Need a moment?</div>
@@ -74,241 +370,135 @@
   </div>
 </div>
 
-<!-- DETAIL (drilldown) -->
 <div id="page-detail" class="page sub-page">
   <div class="sub-header">
-    <button class="back-btn" onclick="nav.back()" aria-label="Back"><i class="ti ti-chevron-left"></i></button>
+    <button class="back-btn" onclick="nav.back()"><i class="ti ti-chevron-left"></i></button>
     <div class="sub-title" id="detail-title"></div>
   </div>
   <div class="detail-body" id="detail-body"></div>
 </div>
 
-<!-- PHASE (drilldown level 1: lists journey items in a phase) -->
 <div id="page-phase" class="page sub-page">
   <div class="sub-header">
-    <button class="back-btn" onclick="nav.back()" aria-label="Back"><i class="ti ti-chevron-left"></i></button>
+    <button class="back-btn" onclick="nav.back()"><i class="ti ti-chevron-left"></i></button>
     <div class="sub-title" id="phase-title"></div>
   </div>
   <div class="phase-body">
     <div class="phase-intro" id="phase-intro"></div>
-    <div class="journey" id="phase-items"></div>
+    <div class="phases" id="phase-items" style="padding:0 20px"></div>
   </div>
 </div>
 
-<!-- RESOURCES -->
 <div id="page-resources" class="page sub-page">
   <div class="sub-header">
-    <button class="back-btn" onclick="nav.back()" aria-label="Back"><i class="ti ti-chevron-left"></i></button>
+    <button class="back-btn" onclick="nav.back()"><i class="ti ti-chevron-left"></i></button>
     <div class="sub-title">Helpful resources</div>
   </div>
   <div class="res-list" id="res-list" style="padding:8px 20px 24px"></div>
 </div>
 
-<!-- MENTAL HEALTH SUPPORT -->
 <div id="page-support" class="page sub-page">
   <div class="sub-header">
-    <button class="back-btn" onclick="nav.back()" aria-label="Back"><i class="ti ti-chevron-left"></i></button>
+    <button class="back-btn" onclick="nav.back()"><i class="ti ti-chevron-left"></i></button>
     <div class="sub-title">Mental health support</div>
   </div>
-
   <div class="support-body">
     <div class="support-banner">
       <i class="ti ti-info-circle"></i>
       <div>You're not alone. Reach out — these services are free, confidential, and there for you 24/7.</div>
     </div>
-
     <div class="support-section-h">Urgent support</div>
     <div class="support-section">
       <a class="crisis-row" href="tel:116123">
         <div class="crisis-icon"><i class="ti ti-phone-call"></i></div>
-        <div class="crisis-info">
-          <div class="crisis-name">Samaritans</div>
-          <div class="crisis-sub">24/7 listening service · Free to call</div>
-        </div>
+        <div class="crisis-info"><div class="crisis-name">Samaritans</div><div class="crisis-sub">24/7 listening service · Free</div></div>
         <div class="crisis-num">116 123</div>
       </a>
       <a class="crisis-row" href="tel:111">
         <div class="crisis-icon"><i class="ti ti-stethoscope"></i></div>
-        <div class="crisis-info">
-          <div class="crisis-name">NHS 111 · Option 2</div>
-          <div class="crisis-sub">Mental health crisis support</div>
-        </div>
+        <div class="crisis-info"><div class="crisis-name">NHS 111 · Option 2</div><div class="crisis-sub">Mental health crisis support</div></div>
         <div class="crisis-num">111</div>
       </a>
       <a class="crisis-row" href="sms:85258&body=SHOUT">
         <div class="crisis-icon"><i class="ti ti-message-circle"></i></div>
-        <div class="crisis-info">
-          <div class="crisis-name">SHOUT</div>
-          <div class="crisis-sub">Text SHOUT to 85258 · Free, 24/7</div>
-        </div>
+        <div class="crisis-info"><div class="crisis-name">SHOUT</div><div class="crisis-sub">Text SHOUT to 85258 · Free, 24/7</div></div>
         <div class="crisis-num">85258</div>
       </a>
       <a class="crisis-row" href="tel:0800585858">
         <div class="crisis-icon"><i class="ti ti-user"></i></div>
-        <div class="crisis-info">
-          <div class="crisis-name">CALM</div>
-          <div class="crisis-sub">5pm–midnight · Anyone struggling</div>
-        </div>
+        <div class="crisis-info"><div class="crisis-name">CALM</div><div class="crisis-sub">5pm–midnight · Anyone struggling</div></div>
         <div class="crisis-num">0800 58 58 58</div>
       </a>
     </div>
-
     <div class="support-section-h">Daily tools</div>
-
     <div class="tool-grid">
-      <button class="tool-card" onclick="app.startBreathing()" aria-label="Start breathing exercise">
-        <div class="tool-icon mint"><i class="ti ti-wind"></i></div>
-        <div class="tool-title">Box breathing</div>
-        <div class="tool-sub">90 seconds</div>
-      </button>
-      <button class="tool-card" onclick="app.openGrounding()" aria-label="Grounding exercise">
-        <div class="tool-icon amber"><i class="ti ti-hand-stop"></i></div>
-        <div class="tool-title">5-4-3-2-1</div>
-        <div class="tool-sub">Grounding</div>
-      </button>
-      <button class="tool-card" onclick="nav.go('journal')" aria-label="Mood check-in">
-        <div class="tool-icon coral"><i class="ti ti-mood-smile"></i></div>
-        <div class="tool-title">Mood check</div>
-        <div class="tool-sub">Log how you feel</div>
-      </button>
-      <button class="tool-card" onclick="app.openAffirmation()" aria-label="Daily affirmation">
-        <div class="tool-icon lilac"><i class="ti ti-sparkles"></i></div>
-        <div class="tool-title">Reminder</div>
-        <div class="tool-sub">Daily affirmation</div>
-      </button>
+      <button class="tool-card" onclick="app.startBreathing()"><div class="tool-icon mint"><i class="ti ti-wind"></i></div><div class="tool-title">Box breathing</div><div class="tool-sub">90 seconds</div></button>
+      <button class="tool-card" onclick="app.openGrounding()"><div class="tool-icon amber"><i class="ti ti-hand-stop"></i></div><div class="tool-title">5-4-3-2-1</div><div class="tool-sub">Grounding</div></button>
+      <button class="tool-card" onclick="nav.go('journal')"><div class="tool-icon coral"><i class="ti ti-mood-smile"></i></div><div class="tool-title">Mood check</div><div class="tool-sub">Log how you feel</div></button>
+      <button class="tool-card" onclick="app.openAffirmation()"><div class="tool-icon lilac"><i class="ti ti-sparkles"></i></div><div class="tool-title">Reminder</div><div class="tool-sub">Daily affirmation</div></button>
     </div>
-
     <div class="support-section-h">Ongoing support</div>
     <div class="support-section">
-      <a class="ongoing-row" href="https://www.mind.org.uk" target="_blank" rel="noopener noreferrer">
-        <div class="ongoing-icon"><i class="ti ti-brain"></i></div>
-        <div class="ongoing-info">
-          <div class="ongoing-name">Mind</div>
-          <div class="ongoing-sub">Mental health information & advice</div>
-        </div>
-        <i class="ti ti-arrow-up-right ongoing-arrow"></i>
-      </a>
-      <a class="ongoing-row" href="https://www.nhs.uk/mental-health/talking-therapies-medicine-treatments/talking-therapies-and-counselling/nhs-talking-therapies/" target="_blank" rel="noopener noreferrer">
-        <div class="ongoing-icon"><i class="ti ti-message-2"></i></div>
-        <div class="ongoing-info">
-          <div class="ongoing-name">NHS Talking Therapies</div>
-          <div class="ongoing-sub">Free therapy · Self-refer online</div>
-        </div>
-        <i class="ti ti-arrow-up-right ongoing-arrow"></i>
-      </a>
-      <a class="ongoing-row" href="https://www.moneyhelper.org.uk/en/money-troubles/dealing-with-debt" target="_blank" rel="noopener noreferrer">
-        <div class="ongoing-icon"><i class="ti ti-pound"></i></div>
-        <div class="ongoing-info">
-          <div class="ongoing-name">MoneyHelper</div>
-          <div class="ongoing-sub">Financial stress · Free guidance</div>
-        </div>
-        <i class="ti ti-arrow-up-right ongoing-arrow"></i>
-      </a>
+      <a class="ongoing-row" href="https://www.mind.org.uk" target="_blank" rel="noopener noreferrer"><div class="ongoing-icon"><i class="ti ti-brain"></i></div><div class="ongoing-info"><div class="ongoing-name">Mind</div><div class="ongoing-sub">Mental health information & advice</div></div><i class="ti ti-arrow-up-right ongoing-arrow"></i></a>
+      <a class="ongoing-row" href="https://www.nhs.uk/mental-health/talking-therapies-medicine-treatments/talking-therapies-and-counselling/nhs-talking-therapies/" target="_blank" rel="noopener noreferrer"><div class="ongoing-icon"><i class="ti ti-message-2"></i></div><div class="ongoing-info"><div class="ongoing-name">NHS Talking Therapies</div><div class="ongoing-sub">Free therapy · Self-refer online</div></div><i class="ti ti-arrow-up-right ongoing-arrow"></i></a>
+      <a class="ongoing-row" href="https://www.moneyhelper.org.uk/en/money-troubles/dealing-with-debt" target="_blank" rel="noopener noreferrer"><div class="ongoing-icon"><i class="ti ti-pound"></i></div><div class="ongoing-info"><div class="ongoing-name">MoneyHelper</div><div class="ongoing-sub">Financial stress · Free guidance</div></div><i class="ti ti-arrow-up-right ongoing-arrow"></i></a>
     </div>
-
-    <div class="support-foot">
-      If you or someone you know is in immediate danger, call <a href="tel:999">999</a>.
-    </div>
+    <div class="support-foot">If you or someone you know is in immediate danger, call <a href="tel:999">999</a>.</div>
   </div>
 </div>
 
-<!-- CHECKLIST -->
 <div id="page-checklist" class="page">
   <div class="cl-header">
     <div class="cl-date" id="today-date">Today</div>
     <div class="cl-h1">Daily checklist</div>
   </div>
   <div class="cl-prog">
-    <div class="cl-prog-top">
-      <div class="cl-prog-label">Today's progress</div>
-      <div class="cl-prog-count"><strong id="done-count">0</strong> / 20</div>
-    </div>
+    <div class="cl-prog-top"><div class="cl-prog-label">Today's progress</div><div class="cl-prog-count"><strong id="done-count">0</strong> / 20</div></div>
     <div class="cl-bar-wrap"><div class="cl-bar" id="cl-bar" style="width:0%"></div></div>
   </div>
   <div id="checklist-sections"></div>
   <button class="reset-btn" onclick="app.resetDaily()"><i class="ti ti-refresh"></i> Reset for tomorrow</button>
 </div>
 
-<!-- JOURNAL -->
 <div id="page-journal" class="page">
-  <div class="cl-header">
-    <div class="cl-date">Your space</div>
-    <div class="cl-h1">Journal</div>
-  </div>
+  <div class="cl-header"><div class="cl-date">Your space</div><div class="cl-h1">Journal</div></div>
   <div class="jn-mood">
     <div class="jn-mood-q">How are you feeling today?</div>
     <div class="jn-mood-row" id="mood-row"></div>
   </div>
   <div class="jn-card">
     <div class="jn-card-h"><i class="ti ti-edit"></i> Today's reflection</div>
-    <textarea class="jn-input" id="win-input" rows="4" placeholder="What went well today? What did you learn? Any wins worth celebrating?"></textarea>
+    <textarea class="jn-input" id="win-input" rows="4" placeholder="What went well today? What did you learn?"></textarea>
     <button class="btn-primary" onclick="app.addEntry()"><i class="ti ti-check"></i> Save entry</button>
   </div>
   <div class="entries-h">Past entries</div>
   <div id="entries-list"></div>
 </div>
 
-<!-- SETTINGS -->
 <div id="page-settings" class="page sub-page">
-  <div class="sub-header">
-    <button class="back-btn" onclick="nav.back()" aria-label="Back"><i class="ti ti-chevron-left"></i></button>
-    <div class="sub-title">Settings</div>
-  </div>
+  <div class="sub-header"><button class="back-btn" onclick="nav.back()"><i class="ti ti-chevron-left"></i></button><div class="sub-title">Settings</div></div>
   <div style="padding:8px 0 20px">
     <div class="set-section">
-      <div class="set-row" onclick="nav.go('resources')">
-        <div class="set-icon" style="background:var(--mint-soft);color:var(--mint-deep)"><i class="ti ti-link"></i></div>
-        <div class="set-info"><div class="set-title">Helpful resources</div><div class="set-sub">Gov.uk, Citizens Advice, Mind & more</div></div>
-        <i class="ti ti-chevron-right set-arrow"></i>
-      </div>
-      <div class="set-row" onclick="app.editName()">
-        <div class="set-icon" style="background:var(--mint-soft);color:var(--mint-deep)"><i class="ti ti-user"></i></div>
-        <div class="set-info"><div class="set-title">Your name</div><div class="set-sub" id="set-name">Not set</div></div>
-        <i class="ti ti-chevron-right set-arrow"></i>
-      </div>
-      <div class="set-row" onclick="app.installPrompt()">
-        <div class="set-icon" style="background:var(--lilac-soft);color:var(--lilac)"><i class="ti ti-device-mobile"></i></div>
-        <div class="set-info"><div class="set-title">Install app</div><div class="set-sub">Add to home screen for offline use</div></div>
-        <i class="ti ti-chevron-right set-arrow"></i>
-      </div>
+      <div class="set-row" onclick="nav.go('resources')"><div class="set-icon" style="background:var(--teal-soft);color:var(--teal-deep)"><i class="ti ti-link"></i></div><div class="set-info"><div class="set-title">Helpful resources</div><div class="set-sub">Gov.uk, Citizens Advice & more</div></div><i class="ti ti-chevron-right set-arrow"></i></div>
+      <div class="set-row" onclick="app.editName()"><div class="set-icon" style="background:var(--teal-soft);color:var(--teal-deep)"><i class="ti ti-user"></i></div><div class="set-info"><div class="set-title">Your name</div><div class="set-sub" id="set-name">Not set</div></div><i class="ti ti-chevron-right set-arrow"></i></div>
+      <div class="set-row" onclick="app.installPrompt()"><div class="set-icon" style="background:var(--lilac-soft);color:var(--lilac)"><i class="ti ti-device-mobile"></i></div><div class="set-info"><div class="set-title">Install app</div><div class="set-sub">Add to home screen</div></div><i class="ti ti-chevron-right set-arrow"></i></div>
     </div>
     <div class="set-section">
-      <div class="set-row" onclick="app.exportData()">
-        <div class="set-icon" style="background:var(--amber-soft);color:var(--amber-text)"><i class="ti ti-download"></i></div>
-        <div class="set-info"><div class="set-title">Export my data</div><div class="set-sub">Download as JSON backup</div></div>
-        <i class="ti ti-chevron-right set-arrow"></i>
-      </div>
-      <div class="set-row danger" onclick="app.clearAllData()">
-        <div class="set-icon"><i class="ti ti-trash"></i></div>
-        <div class="set-info"><div class="set-title">Clear all data</div><div class="set-sub">Reset progress, journal, and settings</div></div>
-        <i class="ti ti-chevron-right set-arrow"></i>
-      </div>
+      <div class="set-row" onclick="app.exportData()"><div class="set-icon" style="background:var(--amber-soft);color:var(--amber-text)"><i class="ti ti-download"></i></div><div class="set-info"><div class="set-title">Export my data</div><div class="set-sub">Download as JSON backup</div></div><i class="ti ti-chevron-right set-arrow"></i></div>
+      <div class="set-row danger" onclick="app.clearAllData()"><div class="set-icon"><i class="ti ti-trash"></i></div><div class="set-info"><div class="set-title">Clear all data</div><div class="set-sub">Reset everything</div></div><i class="ti ti-chevron-right set-arrow"></i></div>
     </div>
-    <div style="padding:16px 20px;text-align:center;font-size:11px;color:var(--ink-3)">
-      RESET · v1.0.0<br>All data stored locally on this device
-    </div>
+    <div style="padding:16px 20px;text-align:center;font-size:11px;color:var(--ink-3)">RESET · v1.0.0<br>All data stored locally on this device</div>
   </div>
 </div>
 
-<!-- NAV -->
-<nav class="nav-bar" aria-label="Main navigation">
-  <div class="nav-item active" data-page="home" onclick="nav.go('home')">
-    <div class="nav-icon"><i class="ti ti-home"></i></div>
-    <div class="nav-label">Home</div>
-  </div>
-  <div class="nav-item" data-page="checklist" onclick="nav.go('checklist')">
-    <div class="nav-icon"><i class="ti ti-checkbox"></i></div>
-    <div class="nav-label">Tasks</div>
-  </div>
-  <div class="nav-item" data-page="journal" onclick="nav.go('journal')">
-    <div class="nav-icon"><i class="ti ti-notebook"></i></div>
-    <div class="nav-label">Journal</div>
-  </div>
+<nav class="nav-bar">
+  <div class="nav-item active" data-page="home" onclick="nav.go('home')"><div class="nav-icon"><i class="ti ti-home"></i></div><div class="nav-label">Home</div></div>
+  <div class="nav-item" data-page="checklist" onclick="nav.go('checklist')"><div class="nav-icon"><i class="ti ti-checkbox"></i></div><div class="nav-label">Tasks</div></div>
+  <div class="nav-item" data-page="journal" onclick="nav.go('journal')"><div class="nav-icon"><i class="ti ti-notebook"></i></div><div class="nav-label">Journal</div></div>
 </nav>
 
 </div>
 
-<!-- ONBOARDING -->
 <div class="onboard" id="onboard" style="display:none">
   <div class="onboard-card">
     <div class="onboard-logo">RESET</div>
@@ -321,20 +511,18 @@
 
 <div class="toast" id="toast"></div>
 
-<!-- BREATHING EXERCISE MODAL -->
 <div class="modal" id="modal-breathing" style="display:none">
   <div class="modal-card">
-    <button class="modal-close" onclick="app.stopBreathing()" aria-label="Close"><i class="ti ti-x"></i></button>
+    <button class="modal-close" onclick="app.stopBreathing()"><i class="ti ti-x"></i></button>
     <div class="breath-stage" id="breath-stage">Get ready</div>
     <div class="breath-circle" id="breath-circle"></div>
     <div class="breath-cycle" id="breath-cycle">Cycle 0 of 4</div>
   </div>
 </div>
 
-<!-- GROUNDING MODAL -->
 <div class="modal" id="modal-grounding" style="display:none">
   <div class="modal-card grounding-card">
-    <button class="modal-close" onclick="app.closeModal('grounding')" aria-label="Close"><i class="ti ti-x"></i></button>
+    <button class="modal-close" onclick="app.closeModal('grounding')"><i class="ti ti-x"></i></button>
     <h3 class="modal-title">5-4-3-2-1 grounding</h3>
     <p class="modal-intro">Bring yourself back to the present moment. Take your time with each one.</p>
     <div class="ground-step"><div class="ground-num">5</div><div class="ground-text"><strong>things you can see</strong><br><span>Look around. Name them quietly.</span></div></div>
@@ -346,26 +534,702 @@
   </div>
 </div>
 
-<!-- AFFIRMATION MODAL -->
 <div class="modal" id="modal-affirmation" style="display:none">
   <div class="modal-card affirmation-card">
-    <button class="modal-close" onclick="app.closeModal('affirmation')" aria-label="Close"><i class="ti ti-x"></i></button>
+    <button class="modal-close" onclick="app.closeModal('affirmation')"><i class="ti ti-x"></i></button>
     <div class="aff-icon"><i class="ti ti-sparkles"></i></div>
     <div class="aff-text" id="aff-text">You are more than this moment.</div>
     <button class="btn-secondary" onclick="app.shuffleAffirmation()"><i class="ti ti-refresh"></i> Another one</button>
   </div>
 </div>
 
-<script src="content.js"></script>
-<script src="app.js"></script>
 <script>
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function() {
-    navigator.serviceWorker.register('service-worker.js').catch(function(err) {
-      console.warn('SW registration failed:', err);
+/* ============== PWA: Manifest & Service Worker (inline) ============== */
+(function setupPWA(){
+  // Inline manifest via blob
+  const manifest = {
+    name: "RESET — For navigating redundancy in the UK",
+    short_name: "RESET",
+    description: "Your private playbook for navigating redundancy in the UK.",
+    start_url: location.pathname,
+    scope: location.pathname,
+    display: "standalone",
+    orientation: "portrait",
+    background_color: "#F5F7F6",
+    theme_color: "#3CBF9E",
+    icons: [
+      { src: "data:image/svg+xml;utf8," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><rect width="512" height="512" rx="112" fill="#3CBF9E"/><g fill="#FFFFFF" opacity="0.95"><polygon points="256,72 274,200 256,184 238,200"/><polygon points="256,440 274,312 256,328 238,312"/><polygon points="440,256 312,274 328,256 312,238"/><polygon points="72,256 200,274 184,256 200,238"/></g><rect x="186" y="156" width="140" height="200" rx="4" fill="#FFFFFF"/><path d="M 256 156 L 326 176 L 326 356 L 256 336 Z" fill="#2EA383"/><circle cx="276" cy="256" r="5" fill="#FFFFFF"/><circle cx="256" cy="256" r="10" fill="#FFFFFF" opacity="0.4"/></svg>'),
+        sizes: "any", type: "image/svg+xml", purpose: "any maskable" }
+    ]
+  };
+  const manifestBlob = new Blob([JSON.stringify(manifest)], { type: 'application/manifest+json' });
+  const manifestURL = URL.createObjectURL(manifestBlob);
+  const link = document.createElement('link');
+  link.rel = 'manifest';
+  link.href = manifestURL;
+  document.head.appendChild(link);
+
+  // Service worker (inline, registered via blob URL)
+  if ('serviceWorker' in navigator) {
+    const swCode = `
+      const CACHE = 'reset-pwa-v1';
+      self.addEventListener('install', e => {
+        self.skipWaiting();
+      });
+      self.addEventListener('activate', e => {
+        e.waitUntil(
+          caches.keys().then(keys => Promise.all(
+            keys.filter(k => k !== CACHE).map(k => caches.delete(k))
+          )).then(() => self.clients.claim())
+        );
+      });
+      self.addEventListener('fetch', e => {
+        if (e.request.method !== 'GET') return;
+        e.respondWith(
+          caches.match(e.request).then(cached => {
+            const fetchPromise = fetch(e.request).then(res => {
+              if (res.ok) {
+                const clone = res.clone();
+                caches.open(CACHE).then(c => c.put(e.request, clone)).catch(()=>{});
+              }
+              return res;
+            }).catch(() => cached);
+            return cached || fetchPromise;
+          })
+        );
+      });
+    `;
+    const swBlob = new Blob([swCode], { type: 'application/javascript' });
+    const swURL = URL.createObjectURL(swBlob);
+    navigator.serviceWorker.register(swURL).catch(err => console.warn('SW failed:', err));
+  }
+})();
+
+/* ============== CONTENT ============== */
+const CONTENT = {
+  phases: [
+    { id:'foundation', title:'Foundation', sub:'Rights, wellbeing & research', icon:'ti-anchor', color:'mint',
+      intro:'Start here. Lock in your legal entitlements, look after yourself, and understand where you want to go next.',
+      journeyIds:['steps','mental','research'] },
+    { id:'momentum', title:'Build momentum', sub:'Strategy, network & brand', icon:'ti-rocket', color:'amber',
+      intro:'Put your plan into action. Set weekly targets, reconnect with your network, and sharpen how you show up.',
+      journeyIds:['strategy','network','brand'] },
+    { id:'land', title:'Land the role', sub:'Interviews, skills & offers', icon:'ti-trophy', color:'lilac',
+      intro:'The final push. Prepare to interview brilliantly, keep learning, and negotiate the offer you deserve.',
+      journeyIds:['interview','upskill','offers'] }
+  ],
+  journey: [
+    { id:'steps', title:'Immediate next steps', meta:'Week 1 · Rights & finance', color:'mint', icon:'ti-stairs-up',
+      quote:'Keeping paperwork organised now prevents chaos later.',
+      groups:[
+        { title:'Redundancy rights', tasks:['Check redundancy pay entitlements on Gov.uk','Confirm receipt of your final payslip','Confirm receipt of your P45 form','Confirm receipt of official redundancy notice'] },
+        { title:'Financial planning', tasks:['Draft a monthly budget','Check eligibility for Jobseeker\'s Allowance','Check eligibility for Universal Credit','Contact Citizens Advice for free guidance'] }
+      ]},
+    { id:'mental', title:'Mental & emotional health', meta:'Ongoing · Recommended', color:'coral', icon:'ti-heart-handshake',
+      quote:"Being made redundant isn't a reflection of your worth — it's a transition, not a failure.",
+      groups:[
+        { title:'Process your emotions', tasks:['Talk to someone you trust','Journal your thoughts and feelings','Allow yourself time to grieve the change'] },
+        { title:'Wellness routines', tasks:['Wake at the same time daily','Get outside for fresh air and movement','Try a meditation app like Headspace or Calm'] },
+        { title:'Professional support', chips:[{i:'ti-stethoscope',t:'NHS Talking Therapies'},{i:'ti-heart',t:'Mind Charity'},{i:'ti-users',t:'Support groups'}] }
+      ]},
+    { id:'research', title:'Job market research', meta:'Foundation · Week 1-2', color:'lilac', icon:'ti-binoculars',
+      quote:'Understand the landscape before you start navigating.',
+      groups:[
+        { title:'Transferable skills', tasks:['What did you do well in your last role?','Which soft and technical skills transfer across industries?'] },
+        { title:'Research platforms', chips:[{i:'ti-brand-linkedin',t:'LinkedIn'},{i:'ti-briefcase',t:'Reed'},{i:'ti-world',t:'Indeed'},{i:'ti-star',t:'Glassdoor'}] }
+      ]},
+    { id:'strategy', title:'Job search strategy', meta:'Ongoing · Weekly targets', color:'amber', icon:'ti-rocket',
+      groups:[
+        { title:'Weekly targets', targets:[{n:'15',l:'Applications'},{n:'3',l:'Connections'},{n:'1',l:'Event'}] },
+        { title:'Diversify your channels', tasks:['Job boards (Indeed, Reed, Glassdoor)','Direct company career pages','Specialist and generalist recruiters','LinkedIn job postings'] },
+        { title:'Tip', quote:"Refresh your strategy weekly — what's working, what's not?" }
+      ]},
+    { id:'network', title:'Networking', meta:'Ongoing · High impact', color:'lilac', icon:'ti-affiliate',
+      quote:'People hire people they know, trust, and respect.',
+      groups:[
+        { title:'Reconnect & reach out', tasks:['Message old colleagues, mentors, and clients','Ask for referrals or advice — not a job directly'] },
+        { title:'Grow your network', tasks:['Join LinkedIn groups in your industry','Attend online events via Eventbrite or meetups','Register for an industry webinar this week'] },
+        { title:'Outreach template', template:"Hi [Name], I hope you're doing well. I was recently made redundant and am exploring new opportunities in [industry]. I'd love to get your perspective on the market or any advice you might have." }
+      ]},
+    { id:'brand', title:'Professional brand', meta:'Week 1-3 · CV & LinkedIn', color:'mint', icon:'ti-user-star',
+      groups:[
+        { title:'CV & cover letter', tasks:['Focus on achievements, not duties','Use keywords from job descriptions for ATS','Tailor cover letter: why the company, role, and you','Ask peers for feedback'] },
+        { title:'LinkedIn optimisation', tasks:['Add a professional headshot','Update your headline with role + skills','Write a summary reflecting your direction','Add skills, certifications, recommendations'] }
+      ]},
+    { id:'interview', title:'Interview preparation', meta:'Pre-interview · STAR', color:'coral', icon:'ti-microphone-2',
+      quote:"You don't rise to the occasion; you fall to the level of your preparation.",
+      groups:[
+        { title:'Research', tasks:['Read mission, values, and recent projects','Check Glassdoor reviews for culture insights','Look up your interviewer on LinkedIn'] },
+        { title:'The STAR framework', star:[{l:'S',n:'Situation',d:'Set the scene and context'},{l:'T',n:'Task',d:'Your specific responsibility'},{l:'A',n:'Action',d:'What you actually did'},{l:'R',n:'Result',d:'The measurable outcome'}] },
+        { title:'Practice', tasks:['Record and review your answers','Do trial runs with friends or mentors','Use InterviewBuddy or Pramp'] }
+      ]},
+    { id:'upskill', title:'Upskilling & learning', meta:'Ongoing · Sharpen your edge', color:'amber', icon:'ti-school',
+      groups:[
+        { title:'Free platforms', chips:[{i:'ti-school',t:'FutureLearn'},{i:'ti-book',t:'Coursera'},{i:'ti-brand-linkedin',t:'LinkedIn Learning'}] },
+        { title:'Certifications', certs:[{i:'ti-clipboard-check',n:'Project Management',p:'PRINCE2, Agile · AXELOS, Coursera'},{i:'ti-trending-up',n:'Digital Marketing',p:'Google Ads, HubSpot Academy'},{i:'ti-chart-line',n:'Tech & Data',p:'Python, SQL · DataCamp, Udemy'},{i:'ti-palette',n:'Design',p:'UX/UI · Figma'}] }
+      ]},
+    { id:'offers', title:'Offers & negotiation', meta:"Final stage", color:'mint', icon:'ti-file-certificate',
+      quote:"Don't just accept — assess. Your worth isn't just your salary.",
+      groups:[
+        { title:'Evaluate the offer', tasks:['Salary vs cost of living','Career development opportunities','Benefits (health, pension, leave)','Culture and work-life balance'] },
+        { title:'Negotiation tips', tasks:['Express excitement first, then discuss terms','Research salaries on Glassdoor before talks','Practice asking confidently, not apologetically'] }
+      ]}
+  ],
+  resources:[
+    { name:'Gov.uk — Redundancy rights', sub:'Your legal entitlements', url:'https://www.gov.uk/redundancy-your-rights', icon:'ti-building-bank', color:'mint' },
+    { name:'Citizens Advice', sub:'Free legal & financial guidance', url:'https://www.citizensadvice.org.uk', icon:'ti-scale', color:'amber' },
+    { name:'National Careers Service', sub:'Free career advice & training', url:'https://nationalcareers.service.gov.uk', icon:'ti-compass', color:'lilac' },
+    { name:'Mind', sub:'Mental health support', url:'https://www.mind.org.uk', icon:'ti-brain', color:'coral' }
+  ],
+  checklist:[
+    { title:'Morning routine', sub:'Start with structure', icon:'ti-sunrise', color:'amber',
+      tasks:['Wake up at your set time','10–15 min of movement','Eat a healthy breakfast','Check in with mood or journal for 5 minutes'] },
+    { title:'Job search', sub:'Apply, follow up, track', icon:'ti-target-arrow', color:'mint',
+      tasks:['Review 3–5 job listings','Apply to 2–3 quality roles','Check target company career pages','Follow up on previous applications','Update your tracker'] },
+    { title:'Networking', sub:'Stay visible, build trust', icon:'ti-affiliate', color:'lilac',
+      tasks:['Engage on LinkedIn','Message 1 contact','Register for an upcoming event'] },
+    { title:'Learn & grow', sub:'Sharpen your skills', icon:'ti-bulb', color:'coral',
+      tasks:['Spend 30–60 minutes on a course','Add new skills to LinkedIn','Bookmark useful insights'] },
+    { title:'Reflect & reset', sub:'Close the day well', icon:'ti-moon-stars', color:'lilac',
+      tasks:['Log jobs applied','Note any feedback','Write 1 win to be proud of','Plan top 3 for tomorrow','Take a screen break before bed'] }
+  ],
+  moods:[{e:'😔',l:'Tough'},{e:'😐',l:'Okay'},{e:'🙂',l:'Good'},{e:'😊',l:'Great'},{e:'🔥',l:'Fired'}]
+};
+
+/* ============== IndexedDB store ============== */
+const DB = {
+  name: 'reset-db',
+  version: 1,
+  storeName: 'kv',
+  _db: null,
+
+  async open(){
+    if (this._db) return this._db;
+    return new Promise((resolve, reject) => {
+      const req = indexedDB.open(this.name, this.version);
+      req.onupgradeneeded = () => {
+        const db = req.result;
+        if (!db.objectStoreNames.contains(this.storeName)) {
+          db.createObjectStore(this.storeName);
+        }
+      };
+      req.onsuccess = () => { this._db = req.result; resolve(this._db); };
+      req.onerror = () => reject(req.error);
     });
-  });
+  },
+
+  async get(key){
+    const db = await this.open();
+    return new Promise((resolve, reject) => {
+      const tx = db.transaction(this.storeName, 'readonly');
+      const req = tx.objectStore(this.storeName).get(key);
+      req.onsuccess = () => resolve(req.result);
+      req.onerror = () => reject(req.error);
+    });
+  },
+
+  async set(key, value){
+    const db = await this.open();
+    return new Promise((resolve, reject) => {
+      const tx = db.transaction(this.storeName, 'readwrite');
+      tx.objectStore(this.storeName).put(value, key);
+      tx.oncomplete = () => resolve(true);
+      tx.onerror = () => reject(tx.error);
+    });
+  },
+
+  async clear(){
+    const db = await this.open();
+    return new Promise((resolve, reject) => {
+      const tx = db.transaction(this.storeName, 'readwrite');
+      tx.objectStore(this.storeName).clear();
+      tx.oncomplete = () => resolve(true);
+      tx.onerror = () => reject(tx.error);
+    });
+  }
+};
+
+/* ============== Store (wraps DB with debounced writes) ============== */
+const store = {
+  data: { name:'', onboarded:false, journeyTasks:{}, dailyTasks:{}, dailyDate:'', entries:[], streak:0, lastActive:'' },
+  _saveTimer: null,
+
+  async load(){
+    try {
+      const stored = await DB.get('state');
+      if (stored) this.data = Object.assign(this.data, stored);
+    } catch(e) { console.warn('Load failed', e); }
+    this.checkDailyReset();
+    this.updateStreak();
+    await this.save();
+  },
+
+  async save(){
+    clearTimeout(this._saveTimer);
+    this._saveTimer = setTimeout(async () => {
+      try { await DB.set('state', this.data); }
+      catch(e) { console.warn('Save failed', e); }
+    }, 150);
+  },
+
+  todayKey(){
+    const d = new Date();
+    return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+  },
+
+  checkDailyReset(){
+    const today = this.todayKey();
+    if (this.data.dailyDate !== today) {
+      this.data.dailyTasks = {};
+      this.data.dailyDate = today;
+    }
+  },
+
+  updateStreak(){
+    const today = this.todayKey();
+    if (this.data.lastActive === today) return;
+    const y = new Date(); y.setDate(y.getDate()-1);
+    const yKey = y.getFullYear()+'-'+String(y.getMonth()+1).padStart(2,'0')+'-'+String(y.getDate()).padStart(2,'0');
+    if (this.data.lastActive === yKey) this.data.streak += 1;
+    else this.data.streak = 1;
+    this.data.lastActive = today;
+  },
+
+  async clear(){
+    try { await DB.clear(); } catch(e){}
+    this.data = { name:'', onboarded:false, journeyTasks:{}, dailyTasks:{}, dailyDate:'', entries:[], streak:0, lastActive:'' };
+  }
+};
+
+/* ============== Navigation ============== */
+const nav = {
+  stack:['home'],
+  go(page, args){
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('page-'+page).classList.add('active');
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.toggle('active', n.dataset.page === page));
+    if (this.stack[this.stack.length-1] !== page) this.stack.push(page);
+    if (page === 'detail' && args) renderDetail(args);
+    if (page === 'phase' && args) renderPhase(args);
+    if (page === 'resources') renderHome();
+    if (page === 'home') app.refreshHome();
+    if (page === 'checklist') app.refreshChecklist();
+    if (page === 'journal') app.refreshJournal();
+    if (page === 'settings') app.refreshSettings();
+    window.scrollTo(0,0);
+  },
+  back(){
+    if (this.stack.length > 1) this.stack.pop();
+    const prev = this.stack[this.stack.length-1] || 'home';
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('page-'+prev).classList.add('active');
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.toggle('active', n.dataset.page === prev));
+    if (prev === 'home') app.refreshHome();
+    window.scrollTo(0,0);
+  }
+};
+
+/* ============== Render ============== */
+function totalTasksForJourney(j){ return j.groups.reduce((s,g) => s + (g.tasks?g.tasks.length:0), 0); }
+function doneTasksForJourney(j){ const st = store.data.journeyTasks[j.id]||{}; return Object.values(st).filter(Boolean).length; }
+
+function renderHome(){
+  const phasesEl = document.getElementById('phases-list');
+  if (phasesEl) {
+    phasesEl.innerHTML = CONTENT.phases.map(p => {
+      const js = p.journeyIds.map(id => CONTENT.journey.find(j => j.id === id)).filter(Boolean);
+      const total = js.reduce((s,j) => s + totalTasksForJourney(j), 0);
+      const done = js.reduce((s,j) => s + doneTasksForJourney(j), 0);
+      const pct = total ? Math.round((done/total)*100) : 0;
+      return `<div class="phase-card" onclick="nav.go('phase','${p.id}')">
+        <div class="phase-icon ${p.color}"><i class="ti ${p.icon}"></i></div>
+        <div class="phase-info">
+          <div class="phase-title">${p.title}</div>
+          <div class="phase-sub">${p.sub}</div>
+          <div class="phase-progress">
+            <div class="phase-bar"><div class="phase-fill" style="width:${pct}%"></div></div>
+            <div class="phase-count">${done}/${total}</div>
+          </div>
+        </div>
+        <i class="ti ti-chevron-right phase-chev"></i>
+      </div>`;
+    }).join('');
+  }
+  const res = document.getElementById('res-list');
+  if (res) {
+    res.innerHTML = CONTENT.resources.map(r => `<a class="res-row" href="${r.url}" target="_blank" rel="noopener noreferrer">
+      <div class="res-icon ${r.color}"><i class="ti ${r.icon}"></i></div>
+      <div class="res-info"><div class="res-name">${r.name}</div><div class="res-sub">${r.sub}</div></div>
+      <i class="ti ti-arrow-up-right" style="color:var(--ink-3);font-size:16px"></i>
+    </a>`).join('');
+  }
 }
+
+function renderPhase(phaseId){
+  const p = CONTENT.phases.find(x => x.id === phaseId);
+  if (!p) return;
+  document.getElementById('phase-title').textContent = p.title;
+  document.getElementById('phase-intro').textContent = p.intro || '';
+  const list = document.getElementById('phase-items');
+  const journeys = p.journeyIds.map(id => CONTENT.journey.find(j => j.id === id)).filter(Boolean);
+  list.innerHTML = journeys.map(j => {
+    const total = totalTasksForJourney(j);
+    const done = doneTasksForJourney(j);
+    const pct = total ? Math.round((done/total)*100) : 0;
+    const meta = total
+      ? `<span>${j.meta}</span><span class="j-dot"></span><div class="j-mini"><div class="j-mini-bar"><div class="j-mini-fill" style="width:${pct}%"></div></div><span>${done}/${total}</span></div>`
+      : `<span>${j.meta}</span>`;
+    return `<div class="j-row" onclick="nav.go('detail','${j.id}')">
+      <div class="j-icon ${j.color}"><i class="ti ${j.icon}"></i></div>
+      <div class="j-info"><div class="j-title">${j.title}</div><div class="j-meta">${meta}</div></div>
+      <i class="ti ti-chevron-right j-chev"></i>
+    </div>`;
+  }).join('');
+}
+
+function renderDetail(id){
+  const j = CONTENT.journey.find(x => x.id === id);
+  if (!j) return;
+  document.getElementById('detail-title').textContent = j.title;
+  const state = store.data.journeyTasks[j.id] || {};
+  let html = '';
+  if (j.quote) html += `<div class="quote"><span class="q">"</span>${j.quote}</div>`;
+  j.groups.forEach(g => {
+    html += `<div class="sub-h">${g.title}</div>`;
+    if (g.tasks) {
+      g.tasks.forEach((t,i) => {
+        const key = `${j.id}_${slug(g.title)}_${i}`;
+        const checked = state[key] ? 'checked' : '';
+        const done = state[key] ? 'done' : '';
+        html += `<div class="task"><div class="cbox ${checked}" data-jid="${j.id}" data-key="${key}" onclick="app.tickJourney(this)"></div><span class="ctext ${done}">${escapeHtml(t)}</span></div>`;
+      });
+    }
+    if (g.chips) html += `<div class="chip-row">${g.chips.map(c => `<div class="chip"><i class="ti ${c.i}"></i> ${c.t}</div>`).join('')}</div>`;
+    if (g.targets) html += `<div class="target-grid">${g.targets.map(t => `<div class="target"><div class="target-num">${t.n}</div><div class="target-label">${t.l}</div></div>`).join('')}</div>`;
+    if (g.star) html += `<div class="star-grid">${g.star.map(s => `<div class="star"><div class="star-head"><div class="star-letter">${s.l}</div><div class="star-name">${s.n}</div></div><div class="star-desc">${s.d}</div></div>`).join('')}</div>`;
+    if (g.template) html += `<div class="template">${escapeHtml(g.template)}<br><button class="template-copy" onclick="app.copyTemplate('${escapeAttr(g.template)}')"><i class="ti ti-copy" style="font-size:13px"></i> Copy template</button></div>`;
+    if (g.certs) html += g.certs.map(c => `<div class="cert-row"><div class="cert-badge"><i class="ti ${c.i}"></i></div><div><div class="cert-name">${c.n}</div><div class="cert-plat">${c.p}</div></div></div>`).join('');
+    if (g.quote) html += `<div class="quote" style="margin-top:8px;margin-bottom:0"><span class="q">"</span>${g.quote}</div>`;
+  });
+  document.getElementById('detail-body').innerHTML = html;
+}
+
+function renderChecklist(){
+  const wrap = document.getElementById('checklist-sections');
+  const state = store.data.dailyTasks;
+  wrap.innerHTML = CONTENT.checklist.map((s,si) => {
+    const tasks = s.tasks.map((t,ti) => {
+      const key = `${si}_${ti}`;
+      const checked = state[key] ? 'checked' : '';
+      const done = state[key] ? 'done' : '';
+      return `<div class="task"><div class="cbox daily ${checked}" data-key="${key}" onclick="app.tickDaily(this)"></div><span class="ctext ${done}">${escapeHtml(t)}</span></div>`;
+    }).join('');
+    const iconColor = s.color === 'amber' ? 'var(--amber-text)' : s.color === 'mint' ? 'var(--teal-deep)' : s.color === 'coral' ? 'var(--coral)' : 'var(--lilac)';
+    return `<div class="cl-section">
+      <div class="cl-sec-head" onclick="app.toggleClSec(this)">
+        <div class="cl-sec-icon" style="background:var(--${s.color === 'mint' ? 'teal' : s.color}-soft);color:${iconColor}"><i class="ti ${s.icon}"></i></div>
+        <div class="cl-sec-info"><div class="cl-sec-title">${s.title}</div><div class="cl-sec-sub">${s.sub}</div></div>
+        <i class="ti ti-chevron-down cl-chev open"></i>
+      </div>
+      <div class="cl-sec-body open">${tasks}</div>
+    </div>`;
+  }).join('');
+  app.updateChecklistProgress();
+}
+
+function renderJournal(){
+  const moodRow = document.getElementById('mood-row');
+  moodRow.innerHTML = CONTENT.moods.map(m => `<div class="mb" data-mood="${m.e} ${m.l}" onclick="app.setMood(this)"><div class="mb-emoji">${m.e}</div><div class="mb-label">${m.l}</div></div>`).join('');
+  const list = document.getElementById('entries-list');
+  if (!store.data.entries.length) {
+    list.innerHTML = `<div class="entry-empty">No entries yet — your reflections will appear here.</div>`;
+  } else {
+    list.innerHTML = store.data.entries.map(e => `<div class="entry">
+      <div class="entry-top"><div class="entry-date">${e.date}</div>${e.mood ? `<div class="entry-mood">${e.mood}</div>` : ''}</div>
+      <div class="entry-text">${escapeHtml(e.text)}</div>
+    </div>`).join('');
+  }
+}
+
+/* ============== App logic ============== */
+const app = {
+  _mood: '', _deferredInstall: null, _breathTimer: null, _breathCycle: 0, _breathTotal: 4,
+
+  totalDaily(){ return CONTENT.checklist.reduce((s,sec) => s + sec.tasks.length, 0); },
+  totalJourney(){ return CONTENT.journey.reduce((s,j) => s + totalTasksForJourney(j), 0); },
+  doneJourney(){ return CONTENT.journey.reduce((s,j) => s + doneTasksForJourney(j), 0); },
+
+  tickJourney(box){
+    const jid = box.dataset.jid, key = box.dataset.key;
+    if (!store.data.journeyTasks[jid]) store.data.journeyTasks[jid] = {};
+    const v = !store.data.journeyTasks[jid][key];
+    store.data.journeyTasks[jid][key] = v;
+    box.classList.toggle('checked', v);
+    box.nextElementSibling.classList.toggle('done', v);
+    store.save();
+  },
+
+  tickDaily(box){
+    const key = box.dataset.key;
+    const v = !store.data.dailyTasks[key];
+    store.data.dailyTasks[key] = v;
+    box.classList.toggle('checked', v);
+    box.nextElementSibling.classList.toggle('done', v);
+    store.save();
+    this.updateChecklistProgress();
+  },
+
+  toggleClSec(hdr){
+    hdr.nextElementSibling.classList.toggle('open');
+    hdr.querySelector('.cl-chev').classList.toggle('open');
+  },
+
+  updateChecklistProgress(){
+    const total = this.totalDaily();
+    const done = Object.values(store.data.dailyTasks).filter(Boolean).length;
+    const pct = total ? Math.round((done/total)*100) : 0;
+    const bar = document.getElementById('cl-bar');
+    if (bar) bar.style.width = pct + '%';
+    const cc = document.querySelector('.cl-prog-count');
+    if (cc) cc.innerHTML = `<strong id="done-count">${done}</strong> / ${total}`;
+  },
+
+  resetDaily(){
+    if (!confirm("Reset today's checklist? Your progress will be cleared.")) return;
+    store.data.dailyTasks = {};
+    store.save();
+    renderChecklist();
+    toast('Checklist reset');
+  },
+
+  setMood(el){
+    document.querySelectorAll('.mb').forEach(b => b.classList.remove('sel'));
+    el.classList.add('sel');
+    this._mood = el.dataset.mood;
+  },
+
+  addEntry(){
+    const input = document.getElementById('win-input');
+    const text = input.value.trim();
+    if (!text) { toast('Write something first'); return; }
+    const d = new Date();
+    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const dateStr = d.getDate()+' '+months[d.getMonth()]+' '+d.getFullYear();
+    store.data.entries.unshift({ date: dateStr, mood: this._mood || '', text, ts: Date.now() });
+    store.save();
+    input.value = '';
+    this._mood = '';
+    document.querySelectorAll('.mb').forEach(b => b.classList.remove('sel'));
+    renderJournal();
+    toast('Entry saved');
+  },
+
+  copyTemplate(text){
+    const decoded = text.replace(/&apos;/g,"'").replace(/&quot;/g,'"');
+    if (navigator.clipboard) navigator.clipboard.writeText(decoded).then(() => toast('Copied')).catch(() => toast('Copy failed'));
+    else toast('Copy not supported');
+  },
+
+  refreshHome(){
+    renderHome();
+    const total = this.totalJourney(), done = this.doneJourney();
+    const pct = total ? Math.round((done/total)*100) : 0;
+    document.getElementById('hero-pct').textContent = pct + '%';
+    document.getElementById('hero-ring').style.strokeDashoffset = 238.76 - (238.76 * pct / 100);
+    document.getElementById('stat-tasks').textContent = done;
+    const dailyTotal = this.totalDaily();
+    const dailyDone = Object.values(store.data.dailyTasks).filter(Boolean).length;
+    document.getElementById('stat-today').textContent = dailyDone + '/' + dailyTotal;
+    document.getElementById('stat-entries').textContent = store.data.entries.length;
+    document.getElementById('streak-count').textContent = store.data.streak;
+    document.getElementById('hero-week').textContent = pct === 0 ? 'Getting started' : pct < 100 ? 'In progress' : 'Journey complete';
+    const greetEl = document.getElementById('greet-text');
+    const greetSubEl = document.getElementById('greet-sub');
+    if (store.data.name) {
+      greetEl.textContent = greetingForTime() + ', ' + store.data.name;
+      const initials = store.data.name.trim().split(/\s+/).map(s => s[0]).slice(0,2).join('').toUpperCase() || 'R';
+      document.getElementById('avatar').textContent = initials;
+    } else {
+      greetEl.textContent = greetingForTime();
+      document.getElementById('avatar').textContent = 'R';
+    }
+    if (greetSubEl) {
+      greetSubEl.textContent = pct === 0 ? "Let's get started" : pct < 100 ? "Keep the momentum going" : "You've done it.";
+    }
+  },
+
+  refreshChecklist(){
+    store.checkDailyReset();
+    renderChecklist();
+    const d = new Date();
+    const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    document.getElementById('today-date').textContent = days[d.getDay()]+', '+d.getDate()+' '+months[d.getMonth()];
+  },
+
+  refreshJournal(){ renderJournal(); },
+
+  refreshSettings(){
+    document.getElementById('set-name').textContent = store.data.name || 'Not set';
+  },
+
+  editName(){
+    const name = prompt('Your name?', store.data.name || '');
+    if (name === null) return;
+    store.data.name = name.trim().slice(0,30);
+    store.save();
+    this.refreshSettings();
+    toast('Name updated');
+  },
+
+  async exportData(){
+    const data = JSON.stringify(store.data, null, 2);
+    const blob = new Blob([data], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'reset-backup-' + store.todayKey() + '.json';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    toast('Backup downloaded');
+  },
+
+  async clearAllData(){
+    if (!confirm('Delete all data? This cannot be undone.')) return;
+    await store.clear();
+    location.reload();
+  },
+
+  installPrompt(){
+    if (this._deferredInstall) {
+      this._deferredInstall.prompt();
+      this._deferredInstall.userChoice.then(() => { this._deferredInstall = null; });
+    } else {
+      toast('Use browser menu: "Add to Home Screen"');
+    }
+  },
+
+  completeOnboarding(){
+    const name = document.getElementById('onboard-name').value.trim();
+    store.data.name = name.slice(0,30);
+    store.data.onboarded = true;
+    store.save();
+    document.getElementById('onboard').style.display = 'none';
+    this.refreshHome();
+  },
+
+  startBreathing(){
+    document.getElementById('modal-breathing').style.display = 'flex';
+    this._breathCycle = 0;
+    this._runBreathStep('inhale');
+  },
+
+  _runBreathStep(phase){
+    const stage = document.getElementById('breath-stage');
+    const circle = document.getElementById('breath-circle');
+    const cycle = document.getElementById('breath-cycle');
+    if (!stage) return;
+    cycle.textContent = `Cycle ${Math.min(this._breathCycle+1, this._breathTotal)} of ${this._breathTotal}`;
+    const phases = {
+      inhale: { label:'Breathe in', next:'hold-in', duration:4000 },
+      'hold-in': { label:'Hold', next:'exhale', duration:4000 },
+      exhale: { label:'Breathe out', next:'hold-out', duration:4000 },
+      'hold-out': { label:'Hold', next:'inhale', duration:4000 }
+    };
+    const p = phases[phase];
+    stage.textContent = p.label;
+    circle.classList.remove('inhale','hold','exhale');
+    if (phase === 'inhale') circle.classList.add('inhale');
+    else if (phase === 'exhale') circle.classList.add('exhale');
+    else circle.classList.add('hold');
+    this._breathTimer = setTimeout(() => {
+      if (phase === 'hold-out') {
+        this._breathCycle += 1;
+        if (this._breathCycle >= this._breathTotal) {
+          stage.textContent = 'Well done';
+          cycle.textContent = 'Complete';
+          this._breathTimer = setTimeout(() => this.stopBreathing(), 1600);
+          return;
+        }
+      }
+      this._runBreathStep(p.next);
+    }, p.duration);
+  },
+
+  stopBreathing(){
+    clearTimeout(this._breathTimer);
+    document.getElementById('modal-breathing').style.display = 'none';
+    const circle = document.getElementById('breath-circle');
+    if (circle) circle.classList.remove('inhale','hold','exhale');
+  },
+
+  openGrounding(){ document.getElementById('modal-grounding').style.display = 'flex'; },
+
+  _affirmations:[
+    'You are more than this moment.',
+    'Your worth is not defined by your job title.',
+    'This is a transition, not a failure.',
+    'You have skills and value this setback cannot take away.',
+    'Rest is not falling behind. Rest is part of the work.',
+    "It's okay to feel lost. Just don't stay lost.",
+    'Every application sent is a sign of your courage.',
+    'You have weathered hard days before. You can weather this one.',
+    'Asking for help is a strength, not a weakness.',
+    'The right opportunity is still ahead of you.',
+    'Your story is far from finished.',
+    'Small steps still count. Keep going.'
+  ],
+
+  openAffirmation(){
+    this.shuffleAffirmation();
+    document.getElementById('modal-affirmation').style.display = 'flex';
+  },
+
+  shuffleAffirmation(){
+    const i = Math.floor(Math.random() * this._affirmations.length);
+    document.getElementById('aff-text').textContent = this._affirmations[i];
+  },
+
+  closeModal(name){
+    const el = document.getElementById('modal-'+name);
+    if (el) el.style.display = 'none';
+  }
+};
+
+/* ============== Utilities ============== */
+function slug(s){ return s.toLowerCase().replace(/[^a-z0-9]+/g,'_'); }
+function greetingForTime(){
+  const h = new Date().getHours();
+  if (h < 12) return 'Good morning';
+  if (h < 18) return 'Good afternoon';
+  return 'Good evening';
+}
+function escapeHtml(s){ return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function escapeAttr(s){ return String(s).replace(/'/g,'&apos;').replace(/"/g,'&quot;'); }
+let toastTimer;
+function toast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+window.addEventListener('beforeinstallprompt', e => {
+  e.preventDefault();
+  app._deferredInstall = e;
+});
+
+/* ============== Init ============== */
+(async () => {
+  await store.load();
+  if (!store.data.onboarded) document.getElementById('onboard').style.display = 'flex';
+  renderHome();
+  renderChecklist();
+  renderJournal();
+  app.refreshHome();
+  app.refreshChecklist();
+})();
 </script>
 </body>
 </html>
